@@ -1,0 +1,15 @@
+{
+  "asset": {
+    "version": "1.0"
+  },
+  "geometricError": 0,
+  "root": {
+
+    "geometricError": 0,
+    "content": {
+      "url": "CesiumTextureBox.b3dm"
+    },
+    "children": [
+    ]
+  }
+}
