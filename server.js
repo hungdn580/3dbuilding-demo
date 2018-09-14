@@ -9,6 +9,8 @@
     var url = require('url');
     var request = require('request');
 
+    var port = process.env.PORT || 8000;
+
     var gzipHeader = Buffer.from("1F8B08", "hex");
 
     var yargs = require('yargs').options({
@@ -172,12 +174,8 @@
         });
     });
 
-    var server = app.listen(argv.port, argv.public ? undefined : 'localhost', function() {
-        if (argv.public) {
-            console.log('Cesium development server running publicly.  Connect to http://localhost:%d/', server.address().port);
-        } else {
-            console.log('Cesium development server running locally.  Connect to http://localhost:%d/', server.address().port);
-        }
+    var server = app.listen(port , function() {
+        console.log("App is running on port " + port);
     });
 
     server.on('error', function (e) {
@@ -205,4 +203,3 @@
     });
 
 })();
-
