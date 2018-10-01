@@ -9,7 +9,7 @@ viewer.scene.globe.depthTestAgainstTerrain = true;
 // var inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 // viewer.clock.currentTime = new Cesium.JulianDate(2457522.154792);
 var scene = viewer.scene;
-var url = 'http://localhost:8000/tilesets/Keangnam/tileset_1.json';
+var url = 'https://limitless-river-37913.herokuapp.com/tilesets/Keangnam/tileset_1.json';
 var tileset;
 
 var bottomMenu = document.getElementById("bottom-menu");
