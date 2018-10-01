@@ -16,9 +16,6 @@
     },
     "geometricError": 10,
     "refine": "REPLACE",
-    "content": {
-      "url": "tree_billboard.i3dm"
-    },
     "children": [
       {
         "boundingVolume": {

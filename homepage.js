@@ -1,126 +1,101 @@
 var viewer = new Cesium.Viewer('cesiumContainer', {
-    terrainProvider: Cesium.createWorldTerrain()
+  infoBox : false,
+  selectionIndicator : false,
+  shadows : true,
+  shouldAnimate : true
 });
 viewer.scene.globe.depthTestAgainstTerrain = true;
+// viewer.extend(Cesium.viewerCesium3DTilesInspectorMixin);
+// var inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
+// viewer.clock.currentTime = new Cesium.JulianDate(2457522.154792);
+var scene = viewer.scene;
+var url = 'http://localhost:8000/tilesets/Keangnam/tileset_1.json';
+var tileset;
 
-var tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
-    url : 'https://limitless-river-37913.herokuapp.com/tilesets/Keangnam/tileset.json'
-}));
+var bottomMenu = document.getElementById("bottom-menu");
+var hideMenu = document.getElementById("hide-menu");
 
-// HTML overlay for showing feature name on mouseover
-var nameOverlay = document.createElement('div');
-viewer.container.appendChild(nameOverlay);
-nameOverlay.className = 'backdrop';
-nameOverlay.style.display = 'none';
-nameOverlay.style.position = 'absolute';
-nameOverlay.style.bottom = '0';
-nameOverlay.style.left = '0';
-nameOverlay.style['pointer-events'] = 'none';
-nameOverlay.style.padding = '4px';
-nameOverlay.style.backgroundColor = 'black';
-// Information about the currently selected feature
-var selected = {
-    feature: undefined,
-    originalColor: new Cesium.Color()
+hideMenu.onclick = function(){
+    bottomMenu.style.display = "none";
 };
-// An entity object which will hold info about the currently selected feature for infobox display
-var selectedEntity = new Cesium.Entity();
-// Get default left click handler for when a feature is not picked on left click
-var clickHandler = viewer.screenSpaceEventHandler.getInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK);
-// If silhouettes are supported, silhouette features in blue on mouse over and silhouette green on mouse click.
-// If silhouettes are not supported, change the feature color to yellow on mouse over and green on mouse click.
-    // Silhouettes are not supported. Instead, change the feature color.
-    // Information about the currently highlighted feature
-    var highlighted = {
-        feature : undefined,
-        originalColor : new Cesium.Color()
-    };
-    // Color a feature yellow on hover.
-    viewer.screenSpaceEventHandler.setInputAction(function onMouseMove(movement) {
-        // If a feature was previously highlighted, undo the highlight
-        if (Cesium.defined(highlighted.feature)) {
-            highlighted.feature.color = highlighted.originalColor;
-            highlighted.feature = undefined;
-        }
-        // Pick a new feature
-        var pickedFeature = viewer.scene.pick(movement.endPosition);
-        if (!Cesium.defined(pickedFeature)) {
-            nameOverlay.style.display = 'none';
-            return;
-        }
-        // A feature was picked, so show it's overlay content
-        nameOverlay.style.display = 'block';
-        nameOverlay.style.bottom = viewer.canvas.clientHeight - movement.endPosition.y + 'px';
-        nameOverlay.style.left = movement.endPosition.x + 'px';
-        var name = pickedFeature.getProperty('name');
-        if (!Cesium.defined(name)) {
-            name = pickedFeature.getProperty('id');
-        }
-        nameOverlay.textContent = name;
-        // Highlight the feature if it's not already selected.
-        if (pickedFeature !== selected.feature) {
-            highlighted.feature = pickedFeature;
-            Cesium.Color.clone(pickedFeature.color, highlighted.originalColor);
-            pickedFeature.color = Cesium.Color.YELLOW;
-        }
-    }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
-    // Color a feature on selection and show metadata in the InfoBox.
-    viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
-        // If a feature was previously selected, undo the highlight
-        if (Cesium.defined(selected.feature)) {
-            selected.feature.color = selected.originalColor;
-            selected.feature = undefined;
-        }
-        // Pick a new feature
-        var pickedFeature = viewer.scene.pick(movement.position);
-        if (!Cesium.defined(pickedFeature)) {
-            clickHandler(movement);
-            return;
-        }
-        // Select the feature if it's not already selected
-        if (selected.feature === pickedFeature) {
-            return;
-        }
-        selected.feature = pickedFeature;
-        // Save the selected feature's original color
-        if (pickedFeature === highlighted.feature) {
-            Cesium.Color.clone(highlighted.originalColor, selected.originalColor);
-            highlighted.feature = undefined;
-        } else {
-            Cesium.Color.clone(pickedFeature.color, selected.originalColor);
-        }
+
+// var tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
+//     url : 'http://localhost:8000//tilesets/Keangnam/tileset.json'
+// }));
+
+function loadTileset(url) {
+    tileset = scene.primitives.add(new Cesium.Cesium3DTileset({
+        url : url
+    }));
+    return tileset.readyPromise.then(function(tileset) {
+        var boundingSphere = tileset.boundingSphere;
+        viewer.camera.viewBoundingSphere(boundingSphere, new Cesium.HeadingPitchRange(0, -2.0, 0));
+        viewer.camera.lookAtTransform(Cesium.Matrix4.IDENTITY);
+    });
+}
+
+loadTileset(url);
+
+var canvas = viewer.canvas;
+var handler = new Cesium.ScreenSpaceEventHandler(canvas);
+
+var current = {
+    feature : undefined,
+    originalColor : new Cesium.Color()
+};
+
+var HIGHLIGHT_COLOR = new Cesium.Color(1.5, 1.0, 0.0, 0.4);
+
+// Highlight feature on mouse over
+handler.setInputAction(function(movement) {
+    var pickedFeature = scene.pick(movement.endPosition);
+    if (Cesium.defined(current.feature) && (current.feature !== pickedFeature)) {
+        // Restore original color to feature that is no longer selected
+        // This assignment is necessary to work with the set property
+        current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
+        current.feature = undefined;
+    } else {
+      // console.log("Feature is not defined");
+    }
+    if (Cesium.defined(pickedFeature) && (pickedFeature !== current.feature)) {
+        current.feature = pickedFeature;
+        Cesium.Color.clone(pickedFeature.color, current.originalColor);
         // Highlight newly selected feature
-        pickedFeature.color = Cesium.Color.LIME;
-        // Set feature infobox description
-        var featureName = pickedFeature.getProperty('name');
-        selectedEntity.name = featureName;
-        selectedEntity.description = 'Loading <div class="cesium-infoBox-loading"></div>';
-        viewer.selectedEntity = selectedEntity;
-        selectedEntity.description = '<table class="cesium-infoBox-defaultTable"><tbody>' +
-                                     '<tr><th>BIN</th><td>' + pickedFeature.getProperty('BIN') + '</td></tr>' +
-                                     '<tr><th>DOITT ID</th><td>' + pickedFeature.getProperty('DOITT_ID') + '</td></tr>' +
-                                     '<tr><th>SOURCE ID</th><td>' + pickedFeature.getProperty('SOURCE_ID') + '</td></tr>' +
-                                     '<tr><th>Longitude</th><td>' + pickedFeature.getProperty('longitude') + '</td></tr>' +
-                                     '<tr><th>Latitude</th><td>' + pickedFeature.getProperty('latitude') + '</td></tr>' +
-                                     '<tr><th>Height</th><td>' + pickedFeature.getProperty('height') + '</td></tr>' +
-                                     '<tr><th>Terrain Height (Ellipsoid)</th><td>' + pickedFeature.getProperty('TerrainHeight') + '</td></tr>' +
-                                     '</tbody></table>';
-    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+        pickedFeature.color = Cesium.Color.clone(HIGHLIGHT_COLOR, pickedFeature.color);
+        bottomMenu.style.display = "block";
+
+        printProperties(movement, current.feature);
+    } else {
+      // console.log("Feature is not defined");
+    }
+}, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
 
 // change style of tile
-tileset.style = new Cesium.Cesium3DTileStyle({
-   color : {
-       conditions : [
-           ['${Height} >= 100', 'color("purple", 0.5)'],
-           ['${Height} >= 50', 'color("red")'],
-           ['true', 'color("blue")']
-       ]
-   },
-   show : '${Height} > 0',
-   meta : {
-       description : '"Building id ${id} has height ${Height}."'
-   }
-});
+// tileset.style = new Cesium.Cesium3DTileStyle({
+//    color : {
+//        conditions : [
+//            ['${Height} >= 200', 'color("purple", 0.5)'],
+//            ['${Height} >= 10', 'color("red")'],
+//            ['true', 'color("blue")']
+//        ]
+//    },
+//    show : '${Height} > 0',
+//    meta : {
+//        description : '"Building id ${id} has height ${Height}."'
+//    }
+// });
+
+function printProperties(movement, feature) {
+    console.log('Properties:');
+    var propertyNames = feature.getPropertyNames();
+    var length = propertyNames.length;
+    for (var i = 0; i < length; ++i) {
+        var propertyName = propertyNames[i];
+        console.log('  ' + propertyName + ': ' + feature.getProperty(propertyName));
+    }
+    // Evaluate feature description
+    console.log('Description : ' + tileset.style.meta.description.evaluate(feature));
+}
 
 // tile failed to load
 tileset.tileFailed.addEventListener(function(error) {
@@ -143,16 +118,16 @@ tileset.tileUnload.addEventListener(function(tile) {
 });
 
 // Apply a red style and then manually set random colors for every other feature when the tile becomes visible.
-tileset.style = new Cesium.Cesium3DTileStyle({
-    color : 'color("red")'
-});
-tileset.tileVisible.addEventListener(function(tile) {
-    var content = tile.content;
-    var featuresLength = content.featuresLength;
-    for (var i = 0; i < featuresLength; i+=2) {
-        content.getFeature(i).color = Cesium.Color.fromRandom();
-    }
-});
+// tileset.style = new Cesium.Cesium3DTileStyle({
+//     color : 'color("red")'
+// });
+// tileset.tileVisible.addEventListener(function(tile) {
+//     var content = tile.content;
+//     var featuresLength = content.featuresLength;
+//     for (var i = 0; i < featuresLength; i+=2) {
+//         content.getFeature(i).color = Cesium.Color.fromRandom();
+//     }
+// });
 
 // The event fired to indicate progress of loading new tiles
 tileset.loadProgress.addEventListener(function(numberOfPendingRequests, numberOfTilesProcessing) {
