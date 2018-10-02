@@ -69,6 +69,14 @@ button.cesium-infoBox-camera {
     padding-top: 10px;
 }
 
+#input-form {
+    position: fixed;
+    top: 0;
+    height: 200px;
+    width: 100%;
+    padding: 20px;
+}
+
 #bottom-menu {
     position: fixed;
     bottom: 0;
