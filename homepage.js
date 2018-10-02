@@ -1,10 +1,12 @@
 Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0ZDViMWY1ZS03MWY1LTQ0YjAtYWFiOC03MmUxNzdjZTIzN2YiLCJpZCI6MzY1OSwic2NvcGVzIjpbImFzciIsImdjIl0sImlhdCI6MTUzODQ0NzYwM30.TyPQBHqnVWS_o-innaMJ-KVz4jfGlfx3V2gwAFQyupo';
+var terrainProvider = Cesium.createWorldTerrain();
 
 var viewer = new Cesium.Viewer('cesiumContainer', {
   infoBox : false,
   selectionIndicator : false,
   shadows : true,
-  shouldAnimate : true
+  shouldAnimate : true,
+  terrainProvider: terrainProvider
 });
 viewer.scene.globe.depthTestAgainstTerrain = true;
 // viewer.extend(Cesium.viewerCesium3DTilesInspectorMixin);
@@ -18,6 +20,9 @@ var tileset;
 
 var bottomMenu = document.getElementById("bottom-menu");
 var hideMenu = document.getElementById("hide-menu");
+
+var inputLatitude = document.getElementById("lat_input");
+var inputLongtitude = document.getElementById("long_input");
 
 // HTML overlay for showing feature name on mouseover
 var nameOverlay = document.createElement('div');
@@ -34,7 +39,6 @@ nameOverlay.style.backgroundColor = 'black';
 hideMenu.onclick = function(){
     bottomMenu.style.display = "none";
 };
-
 // var tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
 //     url : 'http://localhost:8000//tilesets/Keangnam/tileset.json'
 // }));
@@ -44,6 +48,44 @@ function loadTileset(url) {
         url : url
     }));
     return tileset.readyPromise.then(function(tileset) {
+        console.log(tileset);
+
+        document.getElementById("transform_tile").addEventListener("click", function(){
+          var currentLat = inputLatitude.value;
+          var currentLong = inputLongtitude.value;
+
+          if (currentLat != "" && currentLong != "") {
+            // console.log('vao day a', "he" + currentLat + " " + currentLong);
+            var lat = Math.PI * parseFloat(currentLat) / 180;
+            var long = Math.PI * parseFloat(currentLong) / 180;
+
+            var cartographic = Cesium.Cartographic.fromDegrees(long, lat);
+            var positions = [cartographic];
+
+            if (current.feature != null) {
+              if (current.feature.getProperty('id') == 0) {
+                var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
+                tileset._root.children[0].transform = buildingsTransform;
+                // viewer.zoomTo(tileset);
+              } else if (current.feature.getProperty('id') == 10) {
+                var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
+                tileset._root.children[1].transform = buildingsTransform;
+                // viewer.zoomTo(tileset);
+              } else if (current.feature.getProperty('id') == 20) {
+                var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
+                tileset._root.children[2].transform = buildingsTransform;
+                // viewer.zoomTo(tileset);
+              } else {
+                console.log("Transforms failed! No tile was selected");
+              }
+            } else {
+              console.log("Transforms failed! No tile was selected");
+            }
+          } else {
+            console.log("Please fill all input field to transform tile");
+          }
+        });
+
         var boundingSphere = tileset.boundingSphere;
         viewer.camera.viewBoundingSphere(boundingSphere, new Cesium.HeadingPitchRange(0, -2.0, 0));
         viewer.camera.lookAtTransform(Cesium.Matrix4.IDENTITY);
