@@ -4,7 +4,7 @@ var terrainProvider = Cesium.createWorldTerrain();
 var viewer = new Cesium.Viewer('cesiumContainer', {
   infoBox : false,
   selectionIndicator : false,
-  shadows : true,
+  shadows : false,
   shouldAnimate : true,
   terrainProvider: terrainProvider
 });
@@ -13,8 +13,8 @@ viewer.scene.globe.depthTestAgainstTerrain = true;
 // var inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 // viewer.clock.currentTime = new Cesium.JulianDate(2457522.154792);
 var scene = viewer.scene;
-var url = 'https://limitless-river-37913.herokuapp.com/tilesets/Keangnam/tileset_1.json';
-// var url = 'http://localhost:8000/tilesets/Keangnam/tileset_1.json';
+// var url = 'https://limitless-river-37913.herokuapp.com/tilesets/Keangnam/tileset_1.json';
+var url = 'http://localhost:8000/tilesets/Keangnam/tileset_1.json';
 
 var tileset;
 
@@ -39,9 +39,23 @@ nameOverlay.style.backgroundColor = 'black';
 hideMenu.onclick = function(){
     bottomMenu.style.display = "none";
 };
+
 // var tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
 //     url : 'http://localhost:8000//tilesets/Keangnam/tileset.json'
 // }));
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    // document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    // document.getElementById("main").style.marginLeft = "0";
+    document.body.style.backgroundColor = "white";
+}
 
 function loadTileset(url) {
     tileset = scene.primitives.add(new Cesium.Cesium3DTileset({
@@ -116,16 +130,20 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
           bottomMenu.style.display = "none";
           // A feature was picked, so show it's overlay content
           nameOverlay.style.display = 'none';
+          if (current.feature != null) {
+            current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
+            current.feature = undefined;
+          }
           console.log("?????");
             clickHandler(movement);
             return;
         }
 
         if (current.feature != pickedFeature) {
-          if (current.feature != null) {
-            current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
-            current.feature = undefined;
-          }
+          // if (current.feature != null) {
+          //   current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
+          //   current.feature = undefined;
+          // }
 
           current.feature = pickedFeature;
           Cesium.Color.clone(pickedFeature.color, current.originalColor);
