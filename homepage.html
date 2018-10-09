@@ -2,202 +2,275 @@
 <html lang="en">
 
 <head>
-  <!-- Use correct character set. -->
-  <meta charset="utf-8">
-  <!-- Tell IE to use the latest, best version. -->
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <!-- Make the app on mobile take up the full browser screen and disable user scaling. -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-  <title>H2Map</title>
-  <!-- The Cesium library. -->
-  <script src="ThirdParty/Cesium/Cesium.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <!-- Style our app. -->
-  <link rel="stylesheet" href="index.css" media="screen">
-  <link rel="stylesheet" href="sidebar-left.css" media="screen">
-  <!-- <link rel="stylesheet" href="templates/bucket.css" media="screen"/> -->
+    <!-- Use correct character set. -->
+    <meta charset="utf-8">
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <!-- Make the app on mobile take up the full browser screen and disable user scaling. -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>H2Map</title>
+    <!-- The Cesium library. -->
+    <script src="ThirdParty/Cesium/Cesium.js"></script>
+    <!-- Style our app. -->
+    <link rel="stylesheet" href="index.css" media="screen">
+    <link rel="stylesheet" href="sidebar-left.css" media="screen">
+    <!-- <link rel="stylesheet" href="templates/bucket.css" media="screen"/> -->
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="library/css/bootstrap.min.css">
+    <script src="library/js/jquery.min.js"></script>
+    <script src="library/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <body>
+
 <div id="mySidenav-fix" class="sidenav-fix">
-  <a href="javascript:void(0)" class="closebtn" index="1" onclick="toggleSidebar()">
-    <span id="btn-caret-sidebar"><i class="fa fa-caret-left"></i></span>
-  </a>
-  <div class="first-block-search">
-    <div id="panel-search" class="out-div">
-      <div class="search-container">
-        <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
-        <form class="form-search-address" action="#">
-          <input type="text" class="input-address" placeholder="Search.." name="search">
-          <button type="submit" class="btn-search-address"><i class="fa fa-search"></i></button>
-        </form>
-        <span class="road-directions" onclick=""><i class="fa fa-directions"></i></span>
-      </div>
+    <a href="javascript:void(0)" class="toggle-sidebar closebtn" index="1" onclick="toggleSidebar()">
+        <span id="btn-caret-sidebar"><i class="fa fa-caret-left"></i></span>
+    </a>
+    <div class="view-default">
+        <div class="first-block-search">
+            <div id="panel-search" class="out-div">
+                <div class="search-container">
+                    <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
+                    <form class="form-search-address" action="#">
+                        <input type="text" class="input-address" placeholder="Search.." name="search">
+                        <button type="submit" class="btn-search-address"><i class="fa fa-search"></i></button>
+                    </form>
+                    <span class="road-directions" onclick=""><i class="fa fa-directions"></i></span>
+                </div>
+            </div>
+            <div class="action-recently">
+                <ul>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Thành phố Đà Lạt</span></li>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="first-block-search">
+            <div class="action-recently">
+                <ul id="input-form">
+                    <li><input type="text" id="lat_input" name="lat_input" placeholder="Latitude.."></li>
+                    <li><input type="text" id="long_input" name="long_input" placeholder="Longitude.."></li>
+                    <li><input type="submit" id="transform_tile" value="Transforms"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="first-block-search">
+            <div class="action-recently">
+                <ul>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Thành phố Đà Lạt</span></li>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="action-recently">
-      <ul>
-        <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span class="title-li-cus">Thành phố Đà Lạt</span></li>
-        <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
-      </ul>
+
+    <div class="view-point" style="display: none;">
+        <div class="first-block-search view-point-img">
+            <div id="panel-search" class="out-div">
+                <div class="search-container">
+                    <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
+                    <form class="form-search-address" action="#">
+                        <input type="text" class="input-address" placeholder="Search.." name="search">
+                        <button type="submit" class="btn-search-address"><i class="fa fa-search"></i></button>
+                    </form>
+                    <span class="road-directions" onclick=""><i class="fa fa-directions"></i></span>
+                </div>
+            </div>
+            <div class="caption-img">
+                <h5 class="name-point">Keangnam Hanoi Landmark Tower</h5>
+                <a href="#" class="des-point"><span>Tòa nhà với các căn hộ đã được hoàn thiện</span></a>
+            </div>
+        </div>
+
+        <div class="first-block-search">
+            <div class="action-recently">
+                <div class="description">
+                    <span>Tòa nhà chọc trời gồm 3 tháp có văn phòng, khách sạn, nhà hàng và là nơi ngắm cảnh toàn thành phố</span>
+                </div>
+            </div>
+            <div class="action-recently">
+                <ul>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Phạm Hùng, Keangnam, Nam Từ Liêm, Hà Nội, dai qua</span></li>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Landmak 72 </span></li>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">0987654321 </span></li>
+                </ul>
+            </div>
+            <div class="action-recently">
+                <ul>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Thành phố Đà Lạt</span></li>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
+                </ul>
+            </div>
+            <div class="action-recently">
+                <ul>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Thành phố Đà Lạt</span></li>
+                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                            class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="first-block-search">
-    <div class="action-recently">
-      <ul id="input-form">
-        <li><input type="text" id="lat_input" name="lat_input" placeholder="Latitude.."></li>
-        <li><input type="text" id="long_input" name="long_input" placeholder="Longitude.."></li>
-        <li><input type="submit" id="transform_tile" value="Transforms"></li>
-      </ul>
-    </div>
-  </div>
-  <div class="first-block-search">
-    <div class="action-recently">
-      <ul>
-        <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span class="title-li-cus">Thành phố Đà Lạt</span></li>
-        <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
-      </ul>
-    </div>
-  </div>
 </div>
 
-  <div id="cesiumContainer" class="fullsize">
-  </div>
+<div id="cesiumContainer" class="fullsize">
+</div>
 
-  <div id="loadingOverlay">
+<div id="loadingOverlay">
     <h1>Loading...</h1>
-  </div>
+</div>
 
-  <div id="bottom-menu">
+<div id="bottom-menu">
     <span><u id="hide-menu">Hide</u></span>
     <div id="items">
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=bTYeZwfk784">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/9fiQE49p3et/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/23pqSjAbABU/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/jGCeEETBaiP/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb" />
-        </a>
-      </div>
-      <div class="item">
-        <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-          <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb" />
-        </a>
-      </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=bTYeZwfk784">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/9fiQE49p3et/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/23pqSjAbABU/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/jGCeEETBaiP/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
+            </a>
+        </div>
     </div>
-  </div>
+</div>
 
-  <!-- Menu sidebar left -->
+<!-- Menu sidebar left -->
 
-  <div class="widget-settings-shim"></div>
+<div class="widget-settings-shim"></div>
 
-  <div id="mySidenav" class="sidenav">
+<div id="mySidenav" class="sidenav">
     <div>
-      <span class="title-sidebar">GG MAPs</span>
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav')"><i class="fa fa-arrow-left"></i></a>
-      <ul class="list-group">
-        <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-map"></i></span> <span>Maps</span></a>  </li>
-        <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-traffic-light"></i></span> <span>Traffic</span></a>   </li>
-        <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-bell"></i></span> <span>Notifications</span></a>  </li>
-      </ul>
+        <span class="title-sidebar">GG MAPs</span>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav')"><i
+                class="fa fa-arrow-left"></i></a>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-map"></i></span>
+                <span>Maps</span></a></li>
+            <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-traffic-light"></i></span>
+                <span>Traffic</span></a></li>
+            <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-bell"></i></span> <span>Notifications</span></a>
+            </li>
+        </ul>
 
-      <ul class="list-group">
-        <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-home"></i></span> <span>House</span></a>  </li>
-        <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-school"></i></span> <span>School</span></a>   </li>
-        <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-coffee"></i></span> <span>Coffee</span></a>  </li>
-      </ul>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-home"></i></span> <span>House</span></a>
+            </li>
+            <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-school"></i></span> <span>School</span></a>
+            </li>
+            <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-coffee"></i></span> <span>Coffee</span></a>
+            </li>
+        </ul>
 
-      <ul class="list-group">
-        <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-user"></i></span> <span>Maps</span></a>  </li>
-        <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-coffee"></i></span> <span>Traffic</span></a>   </li>
-        <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-bell"></i></span> <span>Notifications</span></a>  </li>
-      </ul>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-user"></i></span>
+                <span>Maps</span></a></li>
+            <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-coffee"></i></span> <span>Traffic</span></a>
+            </li>
+            <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-bell"></i></span> <span>Notifications</span></a>
+            </li>
+        </ul>
     </div>
-  </div>
+</div>
 
-  <script src="homepage.js"></script>
+<script src="homepage.js"></script>
 
-    <script type="text/javascript">
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            $('.widget-settings-shim').show();
+<script type="text/javascript">
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        $('.widget-settings-shim').show();
+    }
+
+    function closeNav(id) {
+        document.getElementById(id).style.width = "0";
+        $('.widget-settings-shim').hide();
+    }
+
+    function toggleSidebar() {
+        console.log(1);
+        console.log($(this).attr('index'));
+        if ($(this).attr('index') == 0) {
+            console.log(3);
+            $('#panel-search').show();
+            $('.first-block-search').show();
+            $(this).attr('index', 1);
+            $('#mySidenav-fix').css('width', '370px');
+            $('#btn-caret-sidebar').html('<i class="fa fa-caret-left"></i>');
+        } else {
+            console.log(2);
+            $('#panel-search').hide();
+            $('.first-block-search').hide();
+            $(this).attr('index', 0);
+            $('#mySidenav-fix').css('width', 0);
+            $('#btn-caret-sidebar').html('<i class="fa fa-caret-right"></i>');
         }
 
-        function closeNav(id) {
-            document.getElementById(id).style.width = "0";
-            $('.widget-settings-shim').hide();
-        }
-        function toggleSidebar() {
-            console.log(1);
-            console.log($(this).attr('index'));
-            if($(this).attr('index') == 0) {
-                console.log(3);
-                $('#panel-search').show();
-                $('.first-block-search').show();
-                $(this).attr('index', 1);
-                $('#mySidenav-fix').css('width', '340px');
-                $('#btn-caret-sidebar').html('<i class="fa fa-caret-left"></i>');
-            } else {
-                console.log(2);
-                $('#panel-search').hide();
-                $('.first-block-search').hide();
-                $(this).attr('index', 0);
-                $('#mySidenav-fix').css('width', 0);
-                $('#btn-caret-sidebar').html('<i class="fa fa-caret-right"></i>');
-            }
+    }
 
-        }
+    $('.widget-settings-shim').click(function () {
+        closeNav("mySidenav");
+    });
 
-        $('.widget-settings-shim').click(function() {
-            closeNav("mySidenav");
-        });
-    </script>
+</script>
 </body>
 
 </html>

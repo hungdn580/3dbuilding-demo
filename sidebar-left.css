@@ -1,3 +1,27 @@
+/*Custom scroll*/
+#mySidenav-fix::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+#mySidenav-fix::-webkit-scrollbar
+{
+    width: 7px;
+    background-color: #F5F5F5;
+}
+
+#mySidenav-fix::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+    border: 2px solid #555555;
+    border-radius: 7px;
+}
+/*end scroll*/
+
+.view-default  {
+    margin-top: 10px;
+}
 .sidenav {
     height: 100%;
     width: 0;
@@ -113,13 +137,14 @@ div#mySidenav ul li:hover i {
     float: right;
     top: 0;
     position: absolute;
-    right: -15px;
+    right: -45px;
     padding: 9px 10px;
 }
 .search-container .form-search-address {
     float: left;
     position: relative;
     padding: 7px 15px;
+    height: 40px;
 }
 .search-container input.input-address:focus,
 .search-container form button:focus {
@@ -160,18 +185,20 @@ span.road-directions:before {
 .sidenav-fix {
     display: block;
     height: 100%;
-    width: 340px;
+    width: 370px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #f4f4f4;
-    overflow-x: visible;
-    padding-top: 10px;
+    /*overflow-x: visible;*/
     transition: 0.3s;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.sidenav-fix a {
+.sidenav-fix .toggle-sidebar {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -215,6 +242,7 @@ span.road-directions:before {
     padding: 10px 0 0 0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     border-radius: 3px;
+    margin-bottom: 10px;
 }
 .first-block-search ul {
     padding: 0;
@@ -261,4 +289,65 @@ span.road-directions:before {
     height: auto;
     padding: 0;
     display: block;
+}
+.first-block-search ul {
+    margin-bottom: 0;
+}
+/* Css sidebar left khi click vào 1 điểm trên view body*/
+.view-point .first-block-search {
+    margin: 0;
+    border-radius: 0;
+    position: relative;
+    padding-top: 0;
+}
+
+.view-point .view-point-img {
+    background-image: url(library/img/view-kangnam.jpg);
+    height: 300px;
+    padding-top: 5px;
+}
+.view-point-img>.out-div {
+    padding: 7px;
+    border-bottom: 0;
+}
+.view-point .view-point-img .caption-img {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #4285F4;
+    color: white;
+    padding: 10px 12px 20px 24px;
+}
+.view-point .view-point-img .caption-img .name-point {
+    font-size: 18px;
+}
+.view-point .view-point-img .caption-img .des-point {
+     color: white;
+     font-size: 13px;
+ }
+.view-point .first-block-search .action-recently {
+    border-bottom: 1px solid #E6E6E6;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 13px;
+}
+.view-point .first-block-search ul li {
+    border-bottom: 0;
+    padding-right: 20px;
+}
+.view-point .first-block-search .action-recently .description {
+    font-size: 13px;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    padding: 20px 12px 20px 24px;
+    color: rgba(0, 0, 0, 0.87);
+    line-height: 20px;
+    text-align: left;
+}
+.view-point .first-block-search ul li .title-li-cus {
+    padding: 0;
+}
+.view-point .first-block-search ul li .icon-cus {
+    padding: 0 20px;
 }

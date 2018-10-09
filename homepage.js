@@ -134,6 +134,11 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
             current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
             current.feature = undefined;
           }
+
+          // Click hiển thị sidebar
+            $('.view-point').show();
+            $('.view-default').hide();
+
           console.log("?????");
             clickHandler(movement);
             return;
