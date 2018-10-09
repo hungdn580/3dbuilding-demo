@@ -125,6 +125,9 @@ var clickHandler = viewer.screenSpaceEventHandler.getInputAction(Cesium.ScreenSp
 // Highlight feature on mouse over
 viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
   // Pick a new feature
+
+        //TODO: OnClick Tileset
+        console.log("Okkkkkkk");
         var pickedFeature = viewer.scene.pick(movement.position);
         if (!Cesium.defined(pickedFeature)) {
           bottomMenu.style.display = "none";
