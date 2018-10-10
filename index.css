@@ -78,7 +78,7 @@ body {
   position:absolute;
   top:0;
  right:0;
-    height: 200px;
+    height: auto;
     width: 100%;
     padding: 20px;
     display: inline-block;
@@ -90,7 +90,7 @@ body {
     bottom: 0;
     height: 200px;
     width: 100%;
-    padding: 20px;
+    padding: 0;
     display: none;
 }
 
@@ -111,12 +111,15 @@ body {
 }
 
 #items{
-    overflow-x: scroll;
     display: block;
-    width: auto;
     white-space: nowrap;
-    height: 200px;
     width: 100%;
+    overflow-y: hidden;
+    overflow-x: visible;
+    background: #2323238f;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
 }
 .item{
     display: inline-block;
