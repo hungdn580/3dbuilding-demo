@@ -14,9 +14,9 @@ viewer.scene.globe.depthTestAgainstTerrain = true;
 // viewer.clock.currentTime = new Cesium.JulianDate(2457522.154792);
 var scene = viewer.scene;
 // var url = 'https://limitless-river-37913.herokuapp.com/tilesets/Keangnam/tileset_1.json';
-var url = 'http://localhost:8000/tilesets/BatchTableHierarchy/tileset.json';
+var url = 'http://localhost:8000/tilesets/Keangnam/tileset_1.json';
 
-var tileset; 
+var tileset;
 
 var bottomMenu = document.getElementById("bottom-menu");
 var hideMenu = document.getElementById("hide-menu");
@@ -56,7 +56,7 @@ toggleSlideBottom.onclick = function(){
         toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Ẩn<i class="fa fa-angle-double-down"></i></span>';
     }
 
-}; 
+};
 
 // var tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
 //     url : 'http://localhost:8000//tilesets/Keangnam/tileset.json'
@@ -236,19 +236,19 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
 // change style of tile
-tileset.style = new Cesium.Cesium3DTileStyle({
-    color: {
-        conditions: [
-            ['${Height} >= 100', 'color("purple", 0.5)'],
-            ['${Height} >= 50', 'color("red")'],
-            ['true', 'color("blue")']
-        ]
-    },
-    show: '${Height} > 0',
-    meta: {
-        description: '"Building id ${id} has height ${Height}."'
-    }
-});
+// tileset.style = new Cesium.Cesium3DTileStyle({
+//     color: {
+//         conditions: [
+//             ['${Height} >= 100', 'color("purple", 0.5)'],
+//             ['${Height} >= 50', 'color("red")'],
+//             ['true', 'color("blue")']
+//         ]
+//     },
+//     show: '${Height} > 0',
+//     meta: {
+//         description: '"Building id ${id} has height ${Height}."'
+//     }
+// });
 
 // Highlight feature on mouse over
 viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
@@ -381,16 +381,6 @@ tileset.tileUnload.addEventListener(function (tile) {
 });
 
 // Apply a red style and then manually set random colors for every other feature when the tile becomes visible.
-tileset.style = new Cesium.Cesium3DTileStyle({
-    color: 'color("red")'
-});
-tileset.tileVisible.addEventListener(function (tile) {
-    var content = tile.content;
-    var featuresLength = content.featuresLength;
-    for (var i = 0; i < featuresLength; i += 2) {
-        content.getFeature(i).color = Cesium.Color.fromRandom();
-    }
-});
 // tileset.style = new Cesium.Cesium3DTileStyle({
 //     color : 'color("red")'
 // });
@@ -413,23 +403,11 @@ tileset.loadProgress.addEventListener(function (numberOfPendingRequests, numberO
 });
 
 viewer.zoomTo(tileset, new Cesium.HeadingPitchRange(0, -0.5, 0));
-<<<<<<< HEAD
-for(var i = 0; i < id.length; i++){
-    $.ajax({
-        type: "GET",
-        url: "https://admin.giaohangtietkiem.vn/admin/AdSalaryCods/updateCodSalary?alias=" + id[i] +"&fr=2018-08-21&to=2018-09-20",
-        processData: false,
-        success: function(msg) {
-          $("#results").append("The result =" + StringifyPretty(msg));
-        }
-      });
-}
-=======
 
 function viewDetailImg() {
   $('#info-img-detail').modal('show');
   $('#info-img-detail').css('display', 'flex');
-} 
+}
 
 function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
@@ -469,4 +447,3 @@ function openNav() {
     $('.widget-settings-shim').click(function () {
         closeNav("mySidenav");
     });
->>>>>>> 7c0b9244f894feeb20f17f32b3d634dcda771f05
