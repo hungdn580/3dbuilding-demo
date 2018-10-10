@@ -351,3 +351,87 @@ span.road-directions:before {
 .view-point .first-block-search ul li .icon-cus {
     padding: 0 20px;
 }
+
+/* Slide slick bottom*/
+.slick-slide {
+    text-align: center;
+    color: #419be0;
+    background: white;
+    margin: 15px 0 10px 0;
+}
+.slick-slide {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    border: 0;
+}
+.slick-slide .item {
+    width: auto;
+}
+.slick-slide img {
+    display: block;
+    width: 100%;
+    /*max-height: 200px;*/
+    transition: all 0.3s;
+}
+
+.slick-initialized .slick-slide {
+    padding: 0;
+    background: transparent;
+}
+.slick-initialized .slick-slide .wrap-img-slide {
+    display: flex;
+    justify-content: center;
+    margin: 0 7px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid transparent;
+}
+.slick-initialized .slick-slide .wrap-img-slide:hover {
+     border: 2px solid white;
+}
+.slick-initialized .slick-slide:focus {
+    outline: none;
+}
+.slick-initialized .wrap-img-slide:focus {
+    border: 2px solid green;
+    outline: none;
+}
+.slick-initialized .slick-prev,
+.slick-initialized .slick-next {
+    display: none !important;
+}
+.slick-initialized .slick-slide .wrap-img-slide:hover img {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: transform 0.4s, opacity 0.4s ease-in-out;
+    -moz-transition: transform 0.4s, opacity 0.4s ease-in-out;
+    transition: transform 0.4s, opacity 0.4s ease-in-out;
+}
+/* end */
+
+/*btn hide show slide bottom*/
+.toggle-slide-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 130px;
+    /*background: black;*/
+    /*padding: 5px 30px;*/
+    /*color: white;*/
+    background: #34bada;
+    padding: 5px 30px;
+    color: white;
+    border: 1px solid #34bada;
+    border-right: 0;
+    cursor: pointer;
+}
+.toggle-slide-bottom i {
+    margin-left: 10px;
+}
+/* custom button full screen*/
+button.cesium-button.cesium-fullscreenButton {
+    position: absolute;
+    bottom: 0;
+}

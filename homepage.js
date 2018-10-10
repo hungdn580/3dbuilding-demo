@@ -20,6 +20,9 @@ var tileset;
 
 var bottomMenu = document.getElementById("bottom-menu");
 var hideMenu = document.getElementById("hide-menu");
+var slideBottom = document.getElementById("items");
+var toggleSlideBottom = document.getElementById("toggle-slide-bottom");
+var btnFullScreen = document.getElementsByClassName("cesium-fullscreenButton");
 
 var inputLatitude = document.getElementById("lat_input");
 var inputLongtitude = document.getElementById("long_input");
@@ -36,8 +39,23 @@ nameOverlay.style['pointer-events'] = 'none';
 nameOverlay.style.padding = '4px';
 nameOverlay.style.backgroundColor = 'black';
 
-hideMenu.onclick = function(){
-    bottomMenu.style.display = "none";
+toggleSlideBottom.onclick = function(){
+    if(toggleSlideBottom.getAttribute('index') == 1) {
+        toggleSlideBottom.setAttribute('index', 0);
+        slideBottom.style.display = "none";
+        bottomMenu.style.height = "auto";
+        toggleSlideBottom.style.bottom = "0";
+        toggleSlideBottom.style.right = "30px";
+        toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Xem thêm ảnh<i class="fa fa-angle-double-up"></i></span>';
+    } else {
+        toggleSlideBottom.setAttribute('index', 1);
+        slideBottom.style.display = "block";
+        bottomMenu.style.height = "200px";
+        toggleSlideBottom.style.bottom = "130px";
+        toggleSlideBottom.style.right = "0";
+        toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Ẩn<i class="fa fa-angle-double-down"></i></span>';
+    }
+
 };
 
 // var tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
@@ -169,6 +187,29 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
           viewer.selectedEntity = selectedEntity;
 
           printProperties(movement, current.feature);
+          // Hiển thị slide slick
+            const slider = $(".slider-item");
+            slider
+                .slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    autoplay: false,
+                    variableWidth: true
+                    // autoplaySpeed: 2000,
+                });
+
+            //Implementing navigation of slides using mouse scroll
+            slider.on('wheel', (function(e) {
+                e.preventDefault();
+
+                if (e.originalEvent.deltaY < 0) {
+                    $(this).slick('slickNext');
+                } else {
+                    $(this).slick('slickPrev');
+                }
+            }));
+          // END Hiển thị slide slick
+
         }
         // current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
         // current.feature = undefined;
@@ -213,6 +254,8 @@ function printProperties(movement, feature) {
     nameOverlay.innerHTML = divContent;
     // Evaluate feature description
     // console.log('Description : ' + tileset.style.meta.description.evaluate(feature));
+
+    // Đẩy nút button xem full màn hình lên phía trên slide
 }
 
 // tile failed to load

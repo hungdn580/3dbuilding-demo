@@ -20,13 +20,17 @@
     <link rel="stylesheet" href="library/css/bootstrap.min.css">
     <script src="library/js/jquery.min.js"></script>
     <script src="library/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="library/webfonts/fa-solid-900.woff2">
+    <link rel="stylesheet" href="library/webfonts/fa-solid-900.woff">
+    <link rel="stylesheet" href="library/css/all.css">
+    <link rel="stylesheet" type="text/css" href="library/css/slick.css"/>
+
 </head>
 
 <body>
 
-<div id="mySidenav-fix" class="sidenav-fix">
+<div style="display: none" id="mySidenav-fix" class="sidenav-fix">
     <a href="javascript:void(0)" class="toggle-sidebar closebtn" index="1" onclick="toggleSidebar()">
         <span id="btn-caret-sidebar"><i class="fa fa-caret-left"></i></span>
     </a>
@@ -134,62 +138,64 @@
 </div>
 
 <div id="bottom-menu">
-    <span><u id="hide-menu">Hide</u></span>
-    <div id="items">
+   <div class="toggle-slide-bottom" id="toggle-slide-bottom" index="1">
+       <span id="hide-menu">Ẩn <i class="fa fa-angle-double-down"></i></span>
+   </div>
+    <div id="items" class="slider-item">
         <div class="item">
-            <a href="https://my.matterport.com/show/?m=bTYeZwfk784">
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/2.jpg"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/3.jpg"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/2.jpg"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/3.jpg"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
+            </div>
+        </div>
+        <div class="item">
+            <div class="wrap-img-slide">
                 <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
-            </a>
+            </div>
         </div>
         <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/9fiQE49p3et/thumb"/>
-            </a>
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
+            </div>
         </div>
         <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/23pqSjAbABU/thumb"/>
-            </a>
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/2.jpg"/>
+            </div>
         </div>
         <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/jGCeEETBaiP/thumb"/>
-            </a>
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/3.jpg"/>
+            </div>
         </div>
         <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
-            </a>
-        </div>
-        <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
-            </a>
-        </div>
-        <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
-            </a>
-        </div>
-        <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
-            </a>
-        </div>
-        <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
-            </a>
-        </div>
-        <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
-            </a>
-        </div>
-        <div class="item">
-            <a href="https://my.matterport.com/show/?m=3DCWEk9D1iw">
-                <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
-            </a>
+            <div class="wrap-img-slide">
+                <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
+            </div>
         </div>
     </div>
 </div>
@@ -233,6 +239,9 @@
 </div>
 
 <script src="homepage.js"></script>
+
+
+<script type="text/javascript" src="library/js/slick.min.js"></script>
 
 <script type="text/javascript">
     function openNav() {
