@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "async": "^2.5.0",
+    "bigslide": "^0.12.1",
     "cesium": "^1.49.0",
     "compression": "^1.7.3",
     "express": "^4.16.3",
