@@ -16,7 +16,7 @@ var scene = viewer.scene;
 // var url = 'https://limitless-river-37913.herokuapp.com/tilesets/Keangnam/tileset_1.json';
 var url = 'http://localhost:8000/tilesets/Keangnam/tileset_1.json';
 
-var tileset;
+var tileset; 
 
 var bottomMenu = document.getElementById("bottom-menu");
 var hideMenu = document.getElementById("hide-menu");
@@ -56,7 +56,7 @@ toggleSlideBottom.onclick = function(){
         toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Ẩn<i class="fa fa-angle-double-down"></i></span>';
     }
 
-};
+}; 
 
 // var tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
 //     url : 'http://localhost:8000//tilesets/Keangnam/tileset.json'
@@ -301,3 +301,47 @@ tileset.loadProgress.addEventListener(function(numberOfPendingRequests, numberOf
 });
 
 viewer.zoomTo(tileset, new Cesium.HeadingPitchRange(0, -0.5, 0));
+
+function viewDetailImg() {
+  $('#info-img-detail').modal('show');
+  $('#info-img-detail').css('display', 'flex');
+} 
+
+function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        $('.widget-settings-shim').show();
+    }
+
+    function closeNav(id) {
+        document.getElementById(id).style.width = "0";
+        $('.widget-settings-shim').hide();
+    }
+
+    function toggleSidebar() {
+        if ($(this).attr('index') == 0) {
+            showSidebarLeft();
+        } else {
+            hideSidebarLeft();
+        }
+
+    }
+    function showSidebarLeft() {
+      // $('#panel-search').show();
+      // $('.first-block-search').show();
+      $('.block-slidebar-left').show();
+      $(this).attr('index', 1);
+      $('#mySidenav-fix').css('width', '370px');
+      $('#btn-caret-sidebar').html('<i class="fa fa-caret-left"></i>');
+    }
+    function hideSidebarLeft() {
+      // $('#panel-search').hide();
+      // $('.first-block-search').hide();
+      $('.block-slidebar-left').hide();
+      $(this).attr('index', 0);
+      $('#mySidenav-fix').css('width', 0);
+      $('#btn-caret-sidebar').html('<i class="fa fa-caret-right"></i>');
+    }
+
+    $('.widget-settings-shim').click(function () {
+        closeNav("mySidenav");
+    });

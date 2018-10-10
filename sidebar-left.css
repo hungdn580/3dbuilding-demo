@@ -117,6 +117,7 @@ div#mySidenav ul li:hover i {
     float: left;
     font-size: 23px;
     padding: 5px 15px;
+    width: 10%;
 }
 .search-container .input-address {
     border: 0;
@@ -137,7 +138,7 @@ div#mySidenav ul li:hover i {
     float: right;
     top: 0;
     position: absolute;
-    right: -45px;
+    right: 0;
     padding: 9px 10px;
 }
 .search-container .form-search-address {
@@ -145,6 +146,7 @@ div#mySidenav ul li:hover i {
     position: relative;
     padding: 7px 15px;
     height: 40px;
+    width: 80%;
 }
 .search-container input.input-address:focus,
 .search-container form button:focus {
@@ -159,7 +161,7 @@ div#mySidenav ul li:hover i {
     color: #4285F4;
     float: right;
     text-align: center;
-    width: 50px;
+    width: 10%;
     vertical-align: middle;
     line-height: 40px;
     position: relative;
@@ -194,8 +196,8 @@ span.road-directions:before {
     /*overflow-x: visible;*/
     transition: 0.3s;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
-    overflow-y: auto;
-    overflow-x: hidden;
+    /*overflow-y: auto;*/
+    /*overflow-x: hidden;*/
 }
 
 .sidenav-fix .toggle-sidebar {
@@ -214,6 +216,7 @@ span.road-directions:before {
     box-shadow: 0 0 2px 0 rgba(0,0,0,0.25);
     padding: 5px;
     height: 40px;
+    top: 10px;
 }
 .sidenav-fix .closebtn>span {
     position: relative;
@@ -235,6 +238,16 @@ span.road-directions:before {
     justify-content: center;
     border-bottom: 1px solid #cccc;
 }
+.view-point .out-div {
+    position: absolute;
+     border-bottom: 0; 
+    z-index: 3;
+}
+.view-point .search-container {
+    margin: 10px 7px;
+    top: auto;
+}
+
 .first-block-search {
     z-index: 1;
     background: #fff;
@@ -307,7 +320,7 @@ span.road-directions:before {
     padding-top: 5px;
 }
 .view-point-img>.out-div {
-    padding: 7px;
+    padding: 10px 7px;
     border-bottom: 0;
 }
 .view-point .view-point-img .caption-img {
@@ -434,4 +447,113 @@ span.road-directions:before {
 button.cesium-button.cesium-fullscreenButton {
     position: absolute;
     bottom: 0;
+}
+/*Custom modal hiển thị iframe khi click vào 1 ảnh ở side bottom*/
+#info-img-detail {
+    /*display: flex;*/
+}
+#info-img-detail .modal-dialog {
+    width: 80%; 
+    margin: 10px auto;
+}
+#info-img-detail .modal-body {
+    display: flex;
+    height: 100%;
+    padding: 0;
+}
+#info-img-detail .modal-content {
+    height: 100%;
+} 
+#info-img-detail .wrap-img-detail {
+    height: 100%;
+    width: 70%;
+    position: absolute;
+}
+@media (max-width: 768px) { 
+    #info-img-detail .wrap-img-detail {
+        width: 100%;
+    }
+    #info-img-detail .close {
+        color: white;
+    }
+}
+
+@media (min-width: 501px) { 
+    .search-top-mobile {
+        display: none;
+    }
+    #mySidenav-fix {
+        display: block;
+    }
+}
+@media (max-width: 500px) { 
+    #mySidenav-fix {
+        display: none;
+    }
+    .search-top-mobile {
+        z-index: 1;
+        padding: 10px 0 0 0;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .search-top-mobile .out-div {
+        width: 100%;
+        position: relative; 
+        margin: 0 10px;
+        border-bottom: 0;
+    }
+    .search-container { 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+}
+
+#info-img-detail .wrap-iframe {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+#info-img-detail iframe {
+    height: 100%;
+    width: 100%;
+    border-color: #000000ba;
+ }
+ #info-img-detail .wrap-info-detail {
+  height: 100%;
+    width: 30%;
+    position: absolute;
+    right: 0;
+    padding: 15px 20px;
+ }
+ #info-img-detail .close {
+    position: absolute;
+     right: 9px;
+     z-index: 1;
+ }
+.modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: 0.7;
+}
+ .wrap-info-detail .info-detail h5 {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.wrap-info-detail .info-des {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+}
+.wrap-info-detail ul {
+    padding-left: 0;
+}
+.wrap-info-detail ul li {
+    list-style-type: none;
+    padding: 5px 10px 5px 0;
+}
+.wrap-info-detail .info-des:last-child {
+    border-bottom: 0;
 }
