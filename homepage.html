@@ -43,12 +43,14 @@
     </div>
 </div>
 
-<div id="mySidenav-fix" class="sidenav-fix">
-    <div>
-    <a href="javascript:void(0)" class="toggle-sidebar closebtn" index="1" onclick="toggleSidebar()">
-        <span id="btn-caret-sidebar"><i class="fa fa-caret-left"></i></span>
-    </a>
+<div id="parent-menuleft">
+    <div class="div-toggle-sidebar" onclick="toggleSidebar()">
+        <a href="javascript:void(0)" class="toggle-sidebar closebtn" index="1">
+            <span id="btn-caret-sidebar"><i class="fa fa-caret-left"></i></span>
+        </a>
     </div>
+<div id="mySidenav-fix" class="sidenav-fix">
+    
     <div class="block-slidebar-left">
         <div class="view-default">
         <div>
@@ -88,15 +90,6 @@
                                 class="title-li-cus">Thành phố Đà Lạt</span></li>
                         <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
                                 class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="first-block-search">
-                <div class="action-recently">
-                    <ul id="input-form">
-                        <li><input type="text" id="lat_input" name="lat_input" placeholder="Latitude.."></li>
-                        <li><input type="text" id="long_input" name="long_input" placeholder="Longitude.."></li>
-                        <li><input type="submit" id="transform_tile" value="Transforms"></li>
                     </ul>
                 </div>
             </div> 
@@ -158,6 +151,7 @@
     </div>
     </div>
 </div>
+</div>
 
 <div id="cesiumContainer" class="fullsize">
 </div>
@@ -172,57 +166,57 @@
    </div>
     <div id="items" class="slider-item">
         <div class="item"> 
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/2.jpg"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/3.jpg"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/2.jpg"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/3.jpg"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="https://my.matterport.com/api/v1/player/models/twXSgVunzzz/thumb"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/2.jpg"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/3.jpg"/>
             </div>
         </div>
         <div class="item">
-            <div class="wrap-img-slide" onclick="viewDetailImg()">
+            <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
             </div>
         </div>
@@ -235,11 +229,15 @@
 
     <!-- Modal content-->
     <div class="modal-content">
+
     <button type="button" class="close" data-dismiss="modal">×</button>
       <div class="modal-body">
         <div class="wrap-img-detail">
             <div class="wrap-iframe">
-                <iframe src="https://my.matterport.com/show/?m=3DCWEk9D1iw">
+                <div class="loadinggg">
+                    <img src="library/img/loading-page.gif">
+                </div>
+                <iframe  id="value-iframe" src="">
                   <p>Your browser does not support iframes.</p>
                 </iframe>
             </div>

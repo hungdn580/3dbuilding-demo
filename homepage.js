@@ -302,11 +302,12 @@ tileset.loadProgress.addEventListener(function(numberOfPendingRequests, numberOf
 
 viewer.zoomTo(tileset, new Cesium.HeadingPitchRange(0, -0.5, 0));
 
-function viewDetailImg() {
+function viewDetailImg(value) {
+  $('#value-iframe').attr('src', value);
+  $('#info-img-detail').css('z-index', '9999'); 
   $('#info-img-detail').modal('show');
-  $('#info-img-detail').css('display', 'flex');
 } 
-
+// $('#info-img-detail').modal('show');
 function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
         $('.widget-settings-shim').show();
@@ -330,7 +331,7 @@ function openNav() {
       // $('.first-block-search').show();
       $('.block-slidebar-left').show();
       $(this).attr('index', 1);
-      $('#mySidenav-fix').css('width', '370px');
+      $('#parent-menuleft').css('width', '370px');
       $('#btn-caret-sidebar').html('<i class="fa fa-caret-left"></i>');
     }
     function hideSidebarLeft() {
@@ -338,7 +339,7 @@ function openNav() {
       // $('.first-block-search').hide();
       $('.block-slidebar-left').hide();
       $(this).attr('index', 0);
-      $('#mySidenav-fix').css('width', 0);
+      $('#parent-menuleft').css('width', 0);
       $('#btn-caret-sidebar').html('<i class="fa fa-caret-right"></i>');
     }
 
