@@ -131,49 +131,6 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-input[type=text], select {
-    width: 20%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-left: 20px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 20%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 20px;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
 .item-thumb {
     height: 100%;
-}
-
-.cesium-viewer-animationContainer {
-  display: none;
-}
-
-.cesium-viewer-bottom {
-  display: none;
-}
-
-.cesium-viewer-toolbar {
-  display: none;
-}
-
-.cesium-viewer-timelineContainer {
-  display: none;
 }
