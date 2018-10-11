@@ -49,12 +49,56 @@
             <span id="btn-caret-sidebar"><i class="fa fa-caret-left"></i></span>
         </a>
     </div>
-<div id="mySidenav-fix" class="sidenav-fix">
-    
-    <div class="block-slidebar-left">
-        <div class="view-default">
-        <div>
-            <div class="first-block-search">
+    <div id="mySidenav-fix" class="sidenav-fix">
+
+        <div class="block-slidebar-left">
+            <div class="view-default">
+                <div>
+                    <div class="first-block-search">
+                        <div id="panel-search" class="out-div">
+                            <div class="search-container">
+                                <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
+                                <form class="form-search-address" action="#">
+                                    <input type="text" class="input-address" placeholder="Search.." name="search">
+                                    <button type="submit" class="btn-search-address"><i class="fa fa-search"></i>
+                                    </button>
+                                </form>
+                                <span class="road-directions" onclick=""><i class="fa fa-map-marker-alt "></i></span>
+                            </div>
+                        </div>
+                        <div class="action-recently">
+                            <ul>
+                                <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                        class="title-li-cus">Thành phố Đà Lạt</span></li>
+                                <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                        class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="first-block-search">
+                        <div class="action-recently">
+                            <ul id="input-form">
+                                <li><input type="text" id="lat_input" name="lat_input" placeholder="Latitude.."></li>
+                                <li><input type="text" id="long_input" name="long_input" placeholder="Longitude.."></li>
+                                <li><input type="submit" id="transform_tile" value="Transforms"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="first-block-search">
+                        <div class="action-recently">
+                            <ul>
+                                <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                        class="title-li-cus">Thành phố Đà Lạt</span></li>
+                                <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                        class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="view-point" style="display: none;">
                 <div id="panel-search" class="out-div">
                     <div class="search-container">
                         <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
@@ -65,92 +109,49 @@
                         <span class="road-directions" onclick=""><i class="fa fa-map-marker-alt "></i></span>
                     </div>
                 </div>
-                <div class="action-recently">
-                    <ul>
-                        <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                                class="title-li-cus">Thành phố Đà Lạt</span></li>
-                        <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                                class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
-                    </ul>
+                <div class="first-block-search view-point-img">
+                    <div class="caption-img">
+                        <h5 class="name-point">Keangnam Hanoi Landmark Tower</h5>
+                        <a href="#" class="des-point"><span>Tòa nhà với các căn hộ đã được hoàn thiện</span></a>
+                    </div>
                 </div>
-            </div>
-            <div class="first-block-search">
-                <div class="action-recently">
-                    <ul id="input-form">
-                        <li><input type="text" id="lat_input" name="lat_input" placeholder="Latitude.."></li>
-                        <li><input type="text" id="long_input" name="long_input" placeholder="Longitude.."></li>
-                        <li><input type="submit" id="transform_tile" value="Transforms"></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="first-block-search">
-                <div class="action-recently">
-                    <ul>
-                        <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                                class="title-li-cus">Thành phố Đà Lạt</span></li>
-                        <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                                class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
-                    </ul>
-                </div>
-            </div> 
-        </div>
 
-    </div>
-
-    <div class="view-point" style="display: none;">
-        <div id="panel-search" class="out-div">
-            <div class="search-container">
-                <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
-                <form class="form-search-address" action="#">
-                    <input type="text" class="input-address" placeholder="Search.." name="search">
-                    <button type="submit" class="btn-search-address"><i class="fa fa-search"></i></button>
-                </form>
-                <span class="road-directions" onclick=""><i class="fa fa-map-marker-alt "></i></span>
-            </div>
-        </div>
-        <div class="first-block-search view-point-img">
-            <div class="caption-img">
-                <h5 class="name-point">Keangnam Hanoi Landmark Tower</h5>
-                <a href="#" class="des-point"><span>Tòa nhà với các căn hộ đã được hoàn thiện</span></a>
-            </div>
-        </div>
-
-        <div class="first-block-search">
-            <div class="action-recently">
-                <div class="description">
-                    <span>Tòa nhà chọc trời gồm 3 tháp có văn phòng, khách sạn, nhà hàng và là nơi ngắm cảnh toàn thành phố</span>
+                <div class="first-block-search">
+                    <div class="action-recently">
+                        <div class="description">
+                            <span>Tòa nhà chọc trời gồm 3 tháp có văn phòng, khách sạn, nhà hàng và là nơi ngắm cảnh toàn thành phố</span>
+                        </div>
+                    </div>
+                    <div class="action-recently">
+                        <ul>
+                            <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                    class="title-li-cus">Phạm Hùng, Keangnam, Nam Từ Liêm, Hà Nội, dai qua</span></li>
+                            <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                    class="title-li-cus">Landmak 72 </span></li>
+                            <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                    class="title-li-cus">0987654321 </span></li>
+                        </ul>
+                    </div>
+                    <div class="action-recently">
+                        <ul>
+                            <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                    class="title-li-cus">Thành phố Đà Lạt</span></li>
+                            <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                    class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
+                        </ul>
+                    </div>
+                    <div class="action-recently">
+                        <ul>
+                            <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                    class="title-li-cus">Thành phố Đà Lạt</span></li>
+                            <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                    class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="action-recently">
-                <ul>
-                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                            class="title-li-cus">Phạm Hùng, Keangnam, Nam Từ Liêm, Hà Nội, dai qua</span></li>
-                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                            class="title-li-cus">Landmak 72 </span></li>
-                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                            class="title-li-cus">0987654321 </span></li>
-                </ul>
-            </div>
-            <div class="action-recently">
-                <ul>
-                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                            class="title-li-cus">Thành phố Đà Lạt</span></li>
-                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                            class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
-                </ul>
-            </div>
-            <div class="action-recently">
-                <ul>
-                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                            class="title-li-cus">Thành phố Đà Lạt</span></li>
-                    <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
-                            class="title-li-cus">Ngõ 222 Cầu Giấy </span></li>
-                </ul>
             </div>
         </div>
     </div>
-    </div>
-</div>
 </div>
 
 <div id="cesiumContainer" class="fullsize">
@@ -161,11 +162,11 @@
 </div>
 
 <div id="bottom-menu">
-   <div class="toggle-slide-bottom" id="toggle-slide-bottom" index="1">
-       <span id="hide-menu">Ẩn <i class="fa fa-angle-double-down"></i></span>
-   </div>
+    <div class="toggle-slide-bottom" id="toggle-slide-bottom" index="1">
+        <span id="hide-menu">Ẩn <i class="fa fa-angle-double-down"></i></span>
+    </div>
     <div id="items" class="slider-item">
-        <div class="item"> 
+        <div class="item">
             <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
             </div>
@@ -225,42 +226,42 @@
 
 <!-- Modal show img when click img in side bottom -->
 <div id="info-img-detail" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
+        <!-- Modal content-->
+        <div class="modal-content">
 
-    <button type="button" class="close" data-dismiss="modal">×</button>
-      <div class="modal-body">
-        <div class="wrap-img-detail">
-            <div class="wrap-iframe">
-                <div class="loadinggg">
-                    <img src="library/img/loading-page.gif">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <div class="modal-body">
+                <div class="wrap-img-detail">
+                    <div class="wrap-iframe">
+                        <div class="loadinggg">
+                            <img src="library/img/loading-page.gif">
+                        </div>
+                        <iframe id="value-iframe" src="">
+                            <p>Your browser does not support iframes.</p>
+                        </iframe>
+                    </div>
                 </div>
-                <iframe  id="value-iframe" src="">
-                  <p>Your browser does not support iframes.</p>
-                </iframe>
+                <div class="wrap-info-detail hidden-xs">
+                    <div class="info-detail">
+                        <h5>Chi Tiết Thông tin ảnh</h5>
+                        <div class="info-des">
+                            <span>Tòa nhà chọc trời gồm 3 tháp có văn phòng, khách sạn, nhà hàng và là nơi ngắm cảnh toàn thành phố</span>
+                        </div>
+                        <div class="info-des">
+                            <ul>
+                                <li>Gần trung tâm thương mại</li>
+                                <li>Gần các điểm bus</li>
+                                <li>Khuôn viên rộng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="wrap-info-detail hidden-xs">
-            <div class="info-detail">
-                <h5>Chi Tiết Thông tin ảnh</h5>
-                <div class="info-des">
-                    <span>Tòa nhà chọc trời gồm 3 tháp có văn phòng, khách sạn, nhà hàng và là nơi ngắm cảnh toàn thành phố</span>
-                </div>
-                <div class="info-des">
-                    <ul>
-                        <li>Gần trung tâm thương mại</li>
-                        <li>Gần các điểm bus</li>
-                        <li>Khuôn viên rộng</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-      </div> 
+
     </div>
-
-  </div>
 </div>
 
 <!-- Menu sidebar left -->

@@ -2,11 +2,11 @@ Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOi
 var terrainProvider = Cesium.createWorldTerrain();
 
 var viewer = new Cesium.Viewer('cesiumContainer', {
-  infoBox : false,
-  selectionIndicator : false,
-  shadows : false,
-  shouldAnimate : true,
-  terrainProvider: terrainProvider
+    infoBox: false,
+    selectionIndicator: false,
+    shadows: false,
+    shouldAnimate: true,
+    terrainProvider: terrainProvider
 });
 viewer.scene.globe.depthTestAgainstTerrain = true;
 // viewer.extend(Cesium.viewerCesium3DTilesInspectorMixin);
@@ -16,7 +16,7 @@ var scene = viewer.scene;
 // var url = 'https://limitless-river-37913.herokuapp.com/tilesets/Keangnam/tileset_1.json';
 var url = 'http://localhost:8000/tilesets/Keangnam/tileset_1.json';
 
-var tileset; 
+var tileset;
 
 var bottomMenu = document.getElementById("bottom-menu");
 var hideMenu = document.getElementById("hide-menu");
@@ -39,8 +39,8 @@ nameOverlay.style['pointer-events'] = 'none';
 nameOverlay.style.padding = '4px';
 nameOverlay.style.backgroundColor = 'black';
 
-toggleSlideBottom.onclick = function(){
-    if(toggleSlideBottom.getAttribute('index') == 1) {
+toggleSlideBottom.onclick = function () {
+    if (toggleSlideBottom.getAttribute('index') == 1) {
         toggleSlideBottom.setAttribute('index', 0);
         slideBottom.style.display = "none";
         bottomMenu.style.height = "auto";
@@ -56,7 +56,7 @@ toggleSlideBottom.onclick = function(){
         toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Ẩn<i class="fa fa-angle-double-down"></i></span>';
     }
 
-}; 
+};
 
 // var tileset = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
 //     url : 'http://localhost:8000//tilesets/Keangnam/tileset.json'
@@ -77,45 +77,45 @@ function closeNav() {
 
 function loadTileset(url) {
     tileset = scene.primitives.add(new Cesium.Cesium3DTileset({
-        url : url
+        url: url
     }));
-    return tileset.readyPromise.then(function(tileset) {
+    return tileset.readyPromise.then(function (tileset) {
         console.log(tileset);
 
-        document.getElementById("transform_tile").addEventListener("click", function(){
-          var currentLat = inputLatitude.value;
-          var currentLong = inputLongtitude.value;
+        document.getElementById("transform_tile").addEventListener("click", function () {
+            var currentLat = inputLatitude.value;
+            var currentLong = inputLongtitude.value;
 
-          if (currentLat != "" && currentLong != "") {
-            // console.log('vao day a', "he" + currentLat + " " + currentLong);
-            var lat = Math.PI * parseFloat(currentLat) / 180;
-            var long = Math.PI * parseFloat(currentLong) / 180;
+            if (currentLat != "" && currentLong != "") {
+                // console.log('vao day a', "he" + currentLat + " " + currentLong);
+                var lat = Math.PI * parseFloat(currentLat) / 180;
+                var long = Math.PI * parseFloat(currentLong) / 180;
 
-            var cartographic = Cesium.Cartographic.fromDegrees(long, lat);
-            var positions = [cartographic];
+                var cartographic = Cesium.Cartographic.fromDegrees(long, lat);
+                var positions = [cartographic];
 
-            if (current.feature != null) {
-              if (current.feature.getProperty('id') == 0) {
-                var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
-                tileset._root.children[0].transform = buildingsTransform;
-                // viewer.zoomTo(tileset);
-              } else if (current.feature.getProperty('id') == 10) {
-                var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
-                tileset._root.children[1].transform = buildingsTransform;
-                // viewer.zoomTo(tileset);
-              } else if (current.feature.getProperty('id') == 20) {
-                var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
-                tileset._root.children[2].transform = buildingsTransform;
-                // viewer.zoomTo(tileset);
-              } else {
-                console.log("Transforms failed! No tile was selected");
-              }
+                if (current.feature != null) {
+                    if (current.feature.getProperty('id') == 0) {
+                        var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
+                        tileset._root.children[0].transform = buildingsTransform;
+                        // viewer.zoomTo(tileset);
+                    } else if (current.feature.getProperty('id') == 10) {
+                        var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
+                        tileset._root.children[1].transform = buildingsTransform;
+                        // viewer.zoomTo(tileset);
+                    } else if (current.feature.getProperty('id') == 20) {
+                        var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
+                        tileset._root.children[2].transform = buildingsTransform;
+                        // viewer.zoomTo(tileset);
+                    } else {
+                        console.log("Transforms failed! No tile was selected");
+                    }
+                } else {
+                    console.log("Transforms failed! No tile was selected");
+                }
             } else {
-              console.log("Transforms failed! No tile was selected");
+                console.log("Please fill all input field to transform tile");
             }
-          } else {
-            console.log("Please fill all input field to transform tile");
-          }
         });
 
         var boundingSphere = tileset.boundingSphere;
@@ -131,8 +131,8 @@ var handler = new Cesium.ScreenSpaceEventHandler(canvas);
 // An entity object which will hold info about the currently selected feature for infobox display
 var selectedEntity = new Cesium.Entity();
 var current = {
-    feature : undefined,
-    originalColor : new Cesium.Color()
+    feature: undefined,
+    originalColor: new Cesium.Color()
 };
 
 var HIGHLIGHT_COLOR = new Cesium.Color(1.5, 1.0, 0.0, 0.4);
@@ -142,77 +142,77 @@ var clickHandler = viewer.screenSpaceEventHandler.getInputAction(Cesium.ScreenSp
 
 // Highlight feature on mouse over
 viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
-  // Pick a new feature
+    // Pick a new feature
 
-        //TODO: OnClick Tileset
-        console.log("Okkkkkkk");
-        var pickedFeature = viewer.scene.pick(movement.position);
-        if (!Cesium.defined(pickedFeature)) {
-          bottomMenu.style.display = "none";
-          // A feature was picked, so show it's overlay content
-          nameOverlay.style.display = 'none';
-          if (current.feature != null) {
+    //TODO: OnClick Tileset
+    console.log("Okkkkkkk");
+    var pickedFeature = viewer.scene.pick(movement.position);
+    if (!Cesium.defined(pickedFeature)) {
+        bottomMenu.style.display = "none";
+        // A feature was picked, so show it's overlay content
+        nameOverlay.style.display = 'none';
+        if (current.feature != null) {
             current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
             current.feature = undefined;
-          }
-
-          // Click hiển thị sidebar
-            $('.view-point').show();
-            $('.view-default').hide();
-
-          console.log("?????");
-            clickHandler(movement);
-            return;
         }
 
-        if (current.feature != pickedFeature) {
-          // if (current.feature != null) {
-          //   current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
-          //   current.feature = undefined;
-          // }
+        // Click hiển thị sidebar
+        $('.view-point').show();
+        $('.view-default').hide();
 
-          current.feature = pickedFeature;
-          Cesium.Color.clone(pickedFeature.color, current.originalColor);
-          // Highlight newly selected feature
-          pickedFeature.color = Cesium.Color.clone(HIGHLIGHT_COLOR, pickedFeature.color);
-          bottomMenu.style.display = "block";
-          // A feature was picked, so show it's overlay content
-          nameOverlay.style.display = 'block';
-          nameOverlay.style.bottom = viewer.canvas.clientHeight - movement.position.y + 'px';
-          nameOverlay.style.left = movement.position.x + 'px';
+        console.log("?????");
+        clickHandler(movement);
+        return;
+    }
 
-          var featureName = pickedFeature.getProperty('name');
-          selectedEntity.name = featureName;
-          selectedEntity.description = 'Loading <div class="cesium-infoBox-loading"></div>';
-          viewer.selectedEntity = selectedEntity;
+    if (current.feature != pickedFeature) {
+        // if (current.feature != null) {
+        //   current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
+        //   current.feature = undefined;
+        // }
 
-          printProperties(movement, current.feature);
-          // Hiển thị slide slick
-            const slider = $(".slider-item");
-            slider
-                .slick({
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    autoplay: false,
-                    variableWidth: true
-                    // autoplaySpeed: 2000,
-                });
+        current.feature = pickedFeature;
+        Cesium.Color.clone(pickedFeature.color, current.originalColor);
+        // Highlight newly selected feature
+        pickedFeature.color = Cesium.Color.clone(HIGHLIGHT_COLOR, pickedFeature.color);
+        bottomMenu.style.display = "block";
+        // A feature was picked, so show it's overlay content
+        nameOverlay.style.display = 'block';
+        nameOverlay.style.bottom = viewer.canvas.clientHeight - movement.position.y + 'px';
+        nameOverlay.style.left = movement.position.x + 'px';
 
-            //Implementing navigation of slides using mouse scroll
-            slider.on('wheel', (function(e) {
-                e.preventDefault();
+        var featureName = pickedFeature.getProperty('name');
+        selectedEntity.name = featureName;
+        selectedEntity.description = 'Loading <div class="cesium-infoBox-loading"></div>';
+        viewer.selectedEntity = selectedEntity;
 
-                if (e.originalEvent.deltaY < 0) {
-                    $(this).slick('slickNext');
-                } else {
-                    $(this).slick('slickPrev');
-                }
-            }));
-          // END Hiển thị slide slick
+        printProperties(movement, current.feature);
+        // Hiển thị slide slick
+        const slider = $(".slider-item");
+        slider
+            .slick({
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                autoplay: false,
+                variableWidth: true
+                // autoplaySpeed: 2000,
+            });
 
-        }
-        // current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
-        // current.feature = undefined;
+        //Implementing navigation of slides using mouse scroll
+        slider.on('wheel', (function (e) {
+            e.preventDefault();
+
+            if (e.originalEvent.deltaY < 0) {
+                $(this).slick('slickNext');
+            } else {
+                $(this).slick('slickPrev');
+            }
+        }));
+        // END Hiển thị slide slick
+
+    }
+    // current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
+    // current.feature = undefined;
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
 // change style of tile
@@ -259,22 +259,22 @@ function printProperties(movement, feature) {
 }
 
 // tile failed to load
-tileset.tileFailed.addEventListener(function(error) {
+tileset.tileFailed.addEventListener(function (error) {
     console.log('An error occurred loading tile: ' + error.url);
     console.log('Error: ' + error.message);
 });
 
 // tile has loaded successful
-tileset.tileLoad.addEventListener(function(tile) {
+tileset.tileLoad.addEventListener(function (tile) {
     console.log('A tile was loaded.');
 });
 
-tileset.allTilesLoaded.addEventListener(function() {
+tileset.allTilesLoaded.addEventListener(function () {
     console.log('All tiles are loaded');
 });
 
 // tile has unloaded
-tileset.tileUnload.addEventListener(function(tile) {
+tileset.tileUnload.addEventListener(function (tile) {
     console.log('A tile was unloaded from the cache.');
 });
 
@@ -291,7 +291,7 @@ tileset.tileUnload.addEventListener(function(tile) {
 // });
 
 // The event fired to indicate progress of loading new tiles
-tileset.loadProgress.addEventListener(function(numberOfPendingRequests, numberOfTilesProcessing) {
+tileset.loadProgress.addEventListener(function (numberOfPendingRequests, numberOfTilesProcessing) {
     if ((numberOfPendingRequests === 0) && (numberOfTilesProcessing === 0)) {
         console.log('Stopped loading');
         return;
@@ -303,46 +303,48 @@ tileset.loadProgress.addEventListener(function(numberOfPendingRequests, numberOf
 viewer.zoomTo(tileset, new Cesium.HeadingPitchRange(0, -0.5, 0));
 
 function viewDetailImg(value) {
-  $('#value-iframe').attr('src', value);
-  $('#info-img-detail').css('z-index', '9999'); 
-  $('#info-img-detail').modal('show');
-} 
+    $('#value-iframe').attr('src', value);
+    $('#info-img-detail').css('z-index', '9999');
+    $('#info-img-detail').modal('show');
+}
+
 // $('#info-img-detail').modal('show');
 function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        $('.widget-settings-shim').show();
-    }
+    document.getElementById("mySidenav").style.width = "250px";
+    $('.widget-settings-shim').show();
+}
 
-    function closeNav(id) {
-        document.getElementById(id).style.width = "0";
-        $('.widget-settings-shim').hide();
-    }
+function closeNav(id) {
+    document.getElementById(id).style.width = "0";
+    $('.widget-settings-shim').hide();
+}
 
-    function toggleSidebar() {
-        if ($(this).attr('index') == 0) {
-            showSidebarLeft();
-        } else {
-            hideSidebarLeft();
-        }
+function toggleSidebar() {
+    if ($(this).attr('index') == 0) {
+        showSidebarLeft();
+    } else {
+        hideSidebarLeft();
+    }
+}
 
-    }
-    function showSidebarLeft() {
-      // $('#panel-search').show();
-      // $('.first-block-search').show();
-      $('.block-slidebar-left').show();
-      $(this).attr('index', 1);
-      $('#parent-menuleft').css('width', '370px');
-      $('#btn-caret-sidebar').html('<i class="fa fa-caret-left"></i>');
-    }
-    function hideSidebarLeft() {
-      // $('#panel-search').hide();
-      // $('.first-block-search').hide();
-      $('.block-slidebar-left').hide();
-      $(this).attr('index', 0);
-      $('#parent-menuleft').css('width', 0);
-      $('#btn-caret-sidebar').html('<i class="fa fa-caret-right"></i>');
-    }
+function showSidebarLeft() {
+    // $('#panel-search').show();
+    // $('.first-block-search').show();
+    $('.block-slidebar-left').show();
+    $(this).attr('index', 1);
+    $('#parent-menuleft').css('width', '370px');
+    $('#btn-caret-sidebar').html('<i class="fa fa-caret-left"></i>');
+}
 
-    $('.widget-settings-shim').click(function () {
-        closeNav("mySidenav");
-    });
+function hideSidebarLeft() {
+    // $('#panel-search').hide();
+    // $('.first-block-search').hide();
+    $('.block-slidebar-left').hide();
+    $(this).attr('index', 0);
+    $('#parent-menuleft').css('width', 0);
+    $('#btn-caret-sidebar').html('<i class="fa fa-caret-right"></i>');
+}
+
+$('.widget-settings-shim').click(function () {
+    closeNav("mySidenav");
+});
