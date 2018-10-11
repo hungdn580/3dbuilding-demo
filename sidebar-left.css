@@ -269,7 +269,7 @@ span.road-directions:before {
     padding: 10px 0 0 0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     border-radius: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
 }
 .first-block-search ul {
     padding: 0;
@@ -278,7 +278,7 @@ span.road-directions:before {
     padding: 0 15px;
 }
 .first-block-search ul li .icon-cus {
-    padding: 0 15px;
+    padding-right: 15px;
     position: relative;
     float: left;
     font-size: 16px;
@@ -286,7 +286,7 @@ span.road-directions:before {
 }
 .first-block-search ul li {
     list-style-type: none;
-    padding: 10px 5px;
+    padding: 10px 15px;
     border-bottom: 1px solid #cccccc;
 }
 .first-block-search ul li:last-child {
@@ -378,7 +378,83 @@ span.road-directions:before {
 .view-point .first-block-search ul li .icon-cus {
     padding: 0 20px;
 }
+/* address nearly*/
+.first-block-search .address-nearly-title {
+  padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.first-block-search .address-nearly {
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    padding: 0 15px;
+    flex-wrap: wrap;
+}
+.first-block-search .address-nearly .block-address {
+    flex-basis: 25%;
+   text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.img-suggesst .address-nearly .block-address {
+    width: 30%;
+    float: left;
+   text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.first-block-search .address-nearly .block-address:hover,
+.first-block-search .address-nearly .block-address:focus {
+    border-radius: 2px;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: 0.2s;
+}
 
+.first-block-search .address-nearly .block-first {
+    margin-bottom: 5px;
+    background: #f53e46;
+    color: white;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.first-block-search .address-nearly .block-two .title-li-cus {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 13px;
+} 
+.first-block-search .address-nearly .block-first i {
+    font-size: 20px; 
+}
+
+.first-block-search .address-nearly .block-two {
+    margin-top: 5px;
+}
+
+.view-point .location-suggesst {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 5px;
+}
+.img-suggesst .address-nearly {
+    display: inline-block;
+}
+.img-suggesst .block-first {
+    background: transparent !important;
+    width: 100% !important;
+    height: auto !important;
+}
+.img-suggesst img {
+    width: 100%;
+}
+.first-block-search .img-suggesst .block-address:hover, 
+.first-block-search .img-suggesst .block-address:focus {
+    background-color: transparent;
+}
+/*end */
 /* Slide slick bottom*/
 .slick-slide {
     text-align: center;
@@ -502,7 +578,7 @@ button.cesium-button.cesium-fullscreenButton {
     }
 }
 @media (max-width: 500px) { 
-    #mySidenav-fix {
+    #parent-menuleft {
         display: none;
     }
     .search-top-mobile {

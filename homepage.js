@@ -187,14 +187,6 @@ viewer.screenSpaceEventHandler.setInputAction(function onMouseMove(movement) {
 }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
 // Color a feature on selection and show metadata in the InfoBox.
 
-
-var bottomMenu = document.getElementById("bottom-menu");
-var hideMenu = document.getElementById("hide-menu");
-
-hideMenu.onclick = function(){
-    bottomMenu.style.display = "none";
-};
-
 viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
     // If a feature was previously selected, undo the highlight
     console.log("Click");
@@ -289,14 +281,6 @@ viewer.screenSpaceEventHandler.setInputAction(function onMouseMove(movement) {
     }
 }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
 // Color a feature on selection and show metadata in the InfoBox.
-
-
-var bottomMenu = document.getElementById("bottom-menu");
-var hideMenu = document.getElementById("hide-menu");
-
-hideMenu.onclick = function(){
-    bottomMenu.style.display = "none";
-};
 
 viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
     // If a feature was previously selected, undo the highlight
