@@ -9,7 +9,7 @@
     var url = require('url');
     var request = require('request');
 
-    var port = process.env.PORT || 8000;
+    var port = process.env.PORT || 8080;
 
     var gzipHeader = Buffer.from("1F8B08", "hex");
 

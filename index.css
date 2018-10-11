@@ -69,31 +69,28 @@ button.cesium-infoBox-camera {
     padding-top: 10px;
 }
 
-<<<<<<< HEAD
-=======
 body {
     font-family: "Lato", sans-serif;
     transition: background-color .5s;
 }
 
 #input-form {
-  position:absolute;
-  top:0;
- right:0;
-    height: 200px;
+    position:absolute;
+    top:0;
+    right:0;
+    height: auto;
     width: 100%;
     padding: 20px;
     display: inline-block;
 
 }
 
->>>>>>> c0b60731c03f87538026d00f0f32e1c3b8628a63
 #bottom-menu {
     position: fixed;
     bottom: 0;
     height: 200px;
     width: 100%;
-    padding: 20px;
+    padding: 0;
     display: none;
 }
 
@@ -102,8 +99,6 @@ body {
     color: #fff;
 }
 
-<<<<<<< HEAD
-=======
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -115,14 +110,16 @@ body {
     font-size: 16px;
 }
 
->>>>>>> c0b60731c03f87538026d00f0f32e1c3b8628a63
 #items{
-    overflow-x: scroll;
     display: block;
-    width: auto;
     white-space: nowrap;
-    height: 200px;
     width: 100%;
+    overflow-y: hidden;
+    overflow-x: visible;
+    background: #2323238f;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
 }
 .item{
     display: inline-block;
@@ -134,11 +131,10 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-<<<<<<< HEAD
 .item-thumb {
     height: 100%;
 }
-=======
+
 input[type=text], select {
     width: 20%;
     padding: 12px 20px;
@@ -171,18 +167,17 @@ input[type=submit]:hover {
 }
 
 .cesium-viewer-animationContainer {
-  display: none;
+    display: none;
 }
 
 .cesium-viewer-bottom {
-  display: none;
+    display: none;
 }
 
 .cesium-viewer-toolbar {
-  display: none;
+    display: none;
 }
 
 .cesium-viewer-timelineContainer {
-  display: none;
+    display: none;
 }
->>>>>>> c0b60731c03f87538026d00f0f32e1c3b8628a63
