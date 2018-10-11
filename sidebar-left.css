@@ -502,7 +502,7 @@ button.cesium-button.cesium-fullscreenButton {
     }
 }
 @media (max-width: 500px) { 
-    #mySidenav-fix {
+    #parent-menuleft {
         display: none;
     }
     .search-top-mobile {
