@@ -343,7 +343,7 @@ span.road-directions:before {
     width: 100%;
     background: #4285F4;
     color: white;
-    padding: 10px 12px 20px 24px;
+    padding: 10px 12px 20px 15px;
 }
 .view-point .view-point-img .caption-img .name-point {
     font-size: 18px;
@@ -367,7 +367,7 @@ span.road-directions:before {
     -webkit-flex: none;
     -ms-flex: none;
     flex: none;
-    padding: 20px 12px 20px 24px;
+    padding: 20px 12px 20px 15px;
     color: rgba(0, 0, 0, 0.87);
     line-height: 20px;
     text-align: left;
@@ -376,7 +376,7 @@ span.road-directions:before {
     padding: 0;
 }
 .view-point .first-block-search ul li .icon-cus {
-    padding: 0 20px;
+    padding-right: 15px;
 }
 /* address nearly*/
 .first-block-search .address-nearly-title {
