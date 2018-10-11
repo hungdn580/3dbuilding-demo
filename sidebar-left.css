@@ -413,7 +413,6 @@ span.road-directions:before {
     border-radius: 2px;
     color: rgba(0, 0, 0, 0.87);
     background-color: rgba(0, 0, 0, 0.05);
-    transition: 0.2s;
 }
 
 .first-block-search .address-nearly .block-first {
