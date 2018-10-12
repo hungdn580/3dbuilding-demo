@@ -746,3 +746,126 @@ button.cesium-button.cesium-fullscreenButton {
     position: absolute;
     text-align: center;
 }
+
+
+/* Hiển thị kiểu web*/
+@media (min-width: 501px) {
+    .search-top-mobile {
+        display: none;
+    }
+    #mySidenav-fix {
+        display: block;
+    }
+    div#bottom-menu-mobile {
+       display: none;
+    }
+}
+/* Hiển thị kiểu mobile*/
+@media (max-width: 500px) {
+    #parent-menuleft {
+        display: none;
+    }
+    .search-top-mobile {
+        z-index: 1;
+        padding: 10px 0 0 0;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        top: 0;
+    }
+    .search-top-mobile .out-div {
+        width: 100%;
+        position: relative;
+        margin: 0 10px;
+        border-bottom: 0;
+    }
+    .search-container {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    /* Responsive menu bottom in mobile*/
+    div#bottom-menu-mobile {
+            position: fixed;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0;
+        /*border-radius: 10px 10px 0 0;*/
+        max-height: 100%;
+        z-index: 1;
+        overflow-y: scroll;
+        background: #fff;
+    }
+    div#bottom-menu-mobile .first-block-search {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 0;
+        /*border-bottom: 1px solid #ccc;*/
+    }
+    div#bottom-menu-mobile .first-block-search:last-child {
+        border-bottom: 0;
+        padding-bottom: 20px;
+    }
+    div#bottom-menu-mobile .content-search-mobile {
+        display: none;
+    }
+    div#bottom-menu-mobile .toggle-slide-bottom {
+        position: unset;
+        text-align: center;
+    }
+     div#bottom-menu-mobile span#hide-menu-mobile i {
+        margin-right: 10px;
+    }
+    div#bottom-menu-mobile .clear-fix {
+        height: 1px;
+        margin: 0 auto;
+        background: #ccc;
+        justify-content: center;
+        margin: 0 15px;
+    }
+    /* View thông tin khi click vào 1 điểm trên màn hình*/
+    .view-point-mobile {
+        display: none;
+    }
+    #view-point-mobile .title-address {
+        background: white;
+        color: black;
+        border: 0;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        padding: 10px 15px;
+        padding-top: 0px;
+    }
+    #view-point-mobile .caption-img {
+        text-align: left;
+    }
+    #view-point-mobile .des-point {
+        color: gray;
+        font-size: 13px;
+    }
+    #view-point-mobile .contact i {
+        margin-right: 10px;
+        color: #075c90;
+    }
+    #view-point-mobile .contact .btn .fa-car {
+        color: #fff;
+    }
+    #view-point-mobile .contact {
+        padding: 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        line-height: 25px;
+        font-size: 14px !important;
+        background: #cccccc30;
+    }
+    #view-point-mobile .name-point {
+        font-weight: 600;
+        font-size: 17px;
+        color: #868600;
+    }
+    #view-point-mobile .fix-toggle span {
+        cursor: pointer;
+    }
+}
