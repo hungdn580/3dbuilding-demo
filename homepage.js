@@ -13,8 +13,12 @@ viewer.scene.globe.depthTestAgainstTerrain = true;
 // var inspectorViewModel = viewer.cesium3DTilesInspector.viewModel;
 // viewer.clock.currentTime = new Cesium.JulianDate(2457522.154792);
 var scene = viewer.scene;
-// var url = 'https://limitless-river-37913.herokuapp.com/tilesets/Keangnam/tileset_1.json';
-var url = 'http://localhost:8080/tilesets/Keangnam/tileset_1.json';
+
+// var port = process.env.PORT || 8080;
+var baseUrl = window.location.hostname + ':8080';
+console.log(baseUrl);
+// var url = 'https://enigmatic-shore-17582.herokuapp.com/tilesets/Keangnam/tileset_1.json';
+var url = 'http://' + baseUrl + '/tilesets/Keangnam/tileset_1.json';
 
 var tileset;
 
@@ -87,6 +91,7 @@ function loadTileset(url) {
         document.getElementById("transform_tile").addEventListener("click", function () {
             var currentLat = inputLatitude.value;
             var currentLong = inputLongtitude.value;
+            var currentHeight = -20;
 
             if (currentLat != "" && currentLong != "") {
                 // console.log('vao day a', "he" + currentLat + " " + currentLong);
@@ -98,18 +103,29 @@ function loadTileset(url) {
 
                 if (current.feature != null) {
                     if (current.feature.getProperty('id') == 0) {
-                        var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
-                        tileset._root.children[0].transform = buildingsTransform;
+                      // keangnam
+                        var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, currentHeight), new Cesium.HeadingPitchRoll());
+                        tileset._root.children[1].transform = buildingsTransform;
+                        console.log(Cesium.Matrix4.pack(buildingsTransform, new Array(16)));
                         // viewer.zoomTo(tileset);
                     } else if (current.feature.getProperty('id') == 10) {
-                        var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
-                        tileset._root.children[1].transform = buildingsTransform;
+                      // handico
+                        var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, currentHeight), new Cesium.HeadingPitchRoll());
+                        tileset._root.children[3].transform = buildingsTransform;
+                        console.log(Cesium.Matrix4.pack(buildingsTransform, new Array(16)));
+
                         // viewer.zoomTo(tileset);
                     } else if (current.feature.getProperty('id') == 20) {
-                        var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, 0), new Cesium.HeadingPitchRoll());
+                        var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, currentHeight), new Cesium.HeadingPitchRoll());
                         tileset._root.children[2].transform = buildingsTransform;
+                        console.log(Cesium.Matrix4.pack(buildingsTransform, new Array(16)));
                         // viewer.zoomTo(tileset);
-                    } else {
+                    } else if (current.feature.getProperty('id') == 40) {
+                      // three building
+                      var buildingsTransform = Cesium.Transforms.headingPitchRollToFixedFrame(Cesium.Cartesian3.fromRadians(long, lat, currentHeight), new Cesium.HeadingPitchRoll());
+                      tileset._root.children[0].transform = buildingsTransform;
+                      console.log(Cesium.Matrix4.pack(buildingsTransform, new Array(16)));
+                    }else {
                         console.log("Transforms failed! No tile was selected");
                     }
                 } else {
@@ -158,86 +174,12 @@ var highlighted = {
     feature: undefined,
     originalColor: new Cesium.Color()
 };
-// Color a feature yellow on hover.
-viewer.screenSpaceEventHandler.setInputAction(function onMouseMove(movement) {
-    // If a feature was previously highlighted, undo the highlight
-    if (Cesium.defined(highlighted.feature)) {
-        highlighted.feature.color = highlighted.originalColor;
-        highlighted.feature = undefined;
-    }
-    // Pick a new feature
-    var pickedFeature = viewer.scene.pick(movement.endPosition);
-    if (!Cesium.defined(pickedFeature)) {
-        nameOverlay.style.display = 'none';
-        return;
-    }
-    // A feature was picked, so show it's overlay content
-    nameOverlay.style.display = 'block';
-    nameOverlay.style.bottom = viewer.canvas.clientHeight - movement.endPosition.y + 'px';
-    nameOverlay.style.left = movement.endPosition.x + 'px';
-    var name = pickedFeature.getProperty('name');
-    if (!Cesium.defined(name)) {
-        name = pickedFeature.getProperty('id');
-    }
-    nameOverlay.textContent = name;
-    // Highlight the feature if it's not already selected.
-    if (pickedFeature !== selected.feature) {
-        highlighted.feature = pickedFeature;
-        Cesium.Color.clone(pickedFeature.color, highlighted.originalColor);
-        pickedFeature.color = Cesium.Color.YELLOW;
-    }
-}, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
-// Color a feature on selection and show metadata in the InfoBox.
 
-viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
-    // If a feature was previously selected, undo the highlight
-    console.log("Click");
-    bottomMenu.style.display = "block";
-
-    if (Cesium.defined(selected.feature)) {
-        selected.feature.color = selected.originalColor;
-        selected.feature = undefined;
-    }
-    // Pick a new feature
-    var pickedFeature = viewer.scene.pick(movement.position);
-    console.log(pickedFeature);
-    if (!Cesium.defined(pickedFeature)) {
-        clickHandler(movement);
-        console.log("Click1");
-        return;
-    }
-    // Select the feature if it's not already selected
-    if (selected.feature === pickedFeature) {
-        console.log("Click2");
-        return;
-    }
-    selected.feature = pickedFeature;
-    // Save the selected feature's original color
-    if (pickedFeature === highlighted.feature) {
-        Cesium.Color.clone(highlighted.originalColor, selected.originalColor);
-        highlighted.feature = undefined;
-    } else {
-        Cesium.Color.clone(pickedFeature.color, selected.originalColor);
-    }
-    // Highlight newly selected feature
-    pickedFeature.color = Cesium.Color.LIME;
-    // Set feature infobox description
-    var featureName = pickedFeature.getProperty('name');
-    selectedEntity.name = featureName;
-    selectedEntity.description = 'Loading <div class="cesium-infoBox-loading"></div>';
-    viewer.selectedEntity = selectedEntity;
-    selectedEntity.description = '<table class="cesium-infoBox-defaultTable"><tbody>' +
-        '<tr><th>BIN</th><td>' + pickedFeature.getProperty('BIN') + '</td></tr>' +
-        '<tr><th>DOITT ID</th><td>' + pickedFeature.getProperty('DOITT_ID') + '</td></tr>' +
-        '<tr><th>SOURCE ID</th><td>' + pickedFeature.getProperty('SOURCE_ID') + '</td></tr>' +
-        '<tr><th>Longitude</th><td>' + pickedFeature.getProperty('longitude') + '</td></tr>' +
-        '<tr><th>Latitude</th><td>' + pickedFeature.getProperty('latitude') + '</td></tr>' +
-        '<tr><th>Height</th><td>' + pickedFeature.getProperty('height') + '</td></tr>' +
-        '<tr><th>Terrain Height (Ellipsoid)</th><td>' + pickedFeature.getProperty('TerrainHeight') + '</td></tr>' +
-        '</tbody></table>';
-    console.log("Click3");
-}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-
+// Information about the currently selected feature
+var selected = {
+    feature: undefined,
+    originalColor: new Cesium.Color()
+};
 // change style of tile
 // tileset.style = new Cesium.Cesium3DTileStyle({
 //     color: {
@@ -254,84 +196,34 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
 // });
 
 // Color a feature yellow on hover.
-viewer.screenSpaceEventHandler.setInputAction(function onMouseMove(movement) {
-    // If a feature was previously highlighted, undo the highlight
-    if (Cesium.defined(highlighted.feature)) {
-        highlighted.feature.color = highlighted.originalColor;
-        highlighted.feature = undefined;
-    }
-    // Pick a new feature
-    var pickedFeature = viewer.scene.pick(movement.endPosition);
-    if (!Cesium.defined(pickedFeature)) {
+    viewer.screenSpaceEventHandler.setInputAction(function onMouseMove(movement) {
+        // If a feature was previously highlighted, undo the highlight
+        if (Cesium.defined(highlighted.feature)) {
+            highlighted.feature.color = highlighted.originalColor;
+            highlighted.feature = undefined;
+        }
+        // Pick a new feature
+        var pickedFeature = viewer.scene.pick(movement.endPosition);
+        if (!Cesium.defined(pickedFeature)) {
+            nameOverlay.style.display = 'none';
+            return;
+        }
+        // A feature was picked, so show it's overlay content
         nameOverlay.style.display = 'none';
-        return;
-    }
-    // A feature was picked, so show it's overlay content
-    nameOverlay.style.display = 'block';
-    nameOverlay.style.bottom = viewer.canvas.clientHeight - movement.endPosition.y + 'px';
-    nameOverlay.style.left = movement.endPosition.x + 'px';
-    var name = pickedFeature.getProperty('name');
-    if (!Cesium.defined(name)) {
-        name = pickedFeature.getProperty('id');
-    }
-    nameOverlay.textContent = name;
-    // Highlight the feature if it's not already selected.
-    if (pickedFeature !== selected.feature) {
-        highlighted.feature = pickedFeature;
-        Cesium.Color.clone(pickedFeature.color, highlighted.originalColor);
-        pickedFeature.color = Cesium.Color.YELLOW;
-    }
-}, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
-// Color a feature on selection and show metadata in the InfoBox.
-
-viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
-    // If a feature was previously selected, undo the highlight
-    console.log("Click");
-    bottomMenu.style.display = "block";
-
-    if (Cesium.defined(selected.feature)) {
-        selected.feature.color = selected.originalColor;
-        selected.feature = undefined;
-    }
-    // Pick a new feature
-    var pickedFeature = viewer.scene.pick(movement.position);
-    console.log(pickedFeature);
-    if (!Cesium.defined(pickedFeature)) {
-        clickHandler(movement);
-        console.log("Click1");
-        return;
-    }
-    // Select the feature if it's not already selected
-    if (selected.feature === pickedFeature) {
-        console.log("Click2");
-        return;
-    }
-    selected.feature = pickedFeature;
-    // Save the selected feature's original color
-    if (pickedFeature === highlighted.feature) {
-        Cesium.Color.clone(highlighted.originalColor, selected.originalColor);
-        highlighted.feature = undefined;
-    } else {
-        Cesium.Color.clone(pickedFeature.color, selected.originalColor);
-    }
-    // Highlight newly selected feature
-    pickedFeature.color = Cesium.Color.LIME;
-    // Set feature infobox description
-    var featureName = pickedFeature.getProperty('name');
-    selectedEntity.name = featureName;
-    selectedEntity.description = 'Loading <div class="cesium-infoBox-loading"></div>';
-    viewer.selectedEntity = selectedEntity;
-    selectedEntity.description = '<table class="cesium-infoBox-defaultTable"><tbody>' +
-        '<tr><th>BIN</th><td>' + pickedFeature.getProperty('BIN') + '</td></tr>' +
-        '<tr><th>DOITT ID</th><td>' + pickedFeature.getProperty('DOITT_ID') + '</td></tr>' +
-        '<tr><th>SOURCE ID</th><td>' + pickedFeature.getProperty('SOURCE_ID') + '</td></tr>' +
-        '<tr><th>Longitude</th><td>' + pickedFeature.getProperty('longitude') + '</td></tr>' +
-        '<tr><th>Latitude</th><td>' + pickedFeature.getProperty('latitude') + '</td></tr>' +
-        '<tr><th>Height</th><td>' + pickedFeature.getProperty('height') + '</td></tr>' +
-        '<tr><th>Terrain Height (Ellipsoid)</th><td>' + pickedFeature.getProperty('TerrainHeight') + '</td></tr>' +
-        '</tbody></table>';
-    console.log("Click3");
-}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+        nameOverlay.style.bottom = viewer.canvas.clientHeight - movement.endPosition.y + 'px';
+        nameOverlay.style.left = movement.endPosition.x + 'px';
+        var name = pickedFeature.getProperty('name');
+        if (!Cesium.defined(name)) {
+            name = pickedFeature.getProperty('id');
+        }
+        nameOverlay.textContent = name;
+        // Highlight the feature if it's not already selected.
+        if (pickedFeature !== selected.feature) {
+            highlighted.feature = pickedFeature;
+            Cesium.Color.clone(pickedFeature.color, highlighted.originalColor);
+            pickedFeature.color = Cesium.Color.YELLOW;
+        }
+    }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
 
 // change style of tile
 // tileset.style = new Cesium.Cesium3DTileStyle({
@@ -385,7 +277,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         current.feature = pickedFeature;
         Cesium.Color.clone(pickedFeature.color, current.originalColor);
         // Highlight newly selected feature
-        pickedFeature.color = Cesium.Color.clone(HIGHLIGHT_COLOR, pickedFeature.color);
+        // pickedFeature.color = Cesium.Color.clone(HIGHLIGHT_COLOR, pickedFeature.color);
         bottomMenu.style.display = "block";
         // A feature was picked, so show it's overlay content
         nameOverlay.style.display = 'block';
@@ -518,7 +410,7 @@ function viewDetailImg(value) {
     $('#info-img-detail').css('z-index', '9999');
     $('#info-img-detail').modal('show');
 }
- 
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     $('.widget-settings-shim').show();
@@ -537,14 +429,14 @@ function toggleSidebar() {
     }
 }
 
-function showSidebarLeft() { 
+function showSidebarLeft() {
     $('.block-slidebar-left').show();
     $(this).attr('index', 1);
     $('#parent-menuleft').css('width', '370px');
     $('#btn-caret-sidebar').html('<i class="fa fa-caret-left"></i>');
 }
 
-function hideSidebarLeft() { 
+function hideSidebarLeft() {
     $('.block-slidebar-left').hide();
     $(this).attr('index', 0);
     $('#parent-menuleft').css('width', 0);
@@ -564,7 +456,7 @@ $("#toggle-menu-bottom-mobile").click(function(){
 function removeTextSearch(device) {
     if(device == 'web') {
         $('.view-point').hide();
-        $('.view-default').show(); 
+        $('.view-default').show();
     } else {
         console.log(this);
         // (this).html('<i class="fa fa-times"></i>');

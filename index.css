@@ -131,6 +131,10 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
+.item-thumb {
+    height: 100%;
+}
+
 input[type=text], select {
     width: 20%;
     padding: 12px 20px;
