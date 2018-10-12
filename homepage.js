@@ -19,7 +19,7 @@ var baseUrl = window.location.hostname;
 console.log(baseUrl);
 
 // var url = 'https://enigmatic-shore-17582.herokuapp.com/tilesets/Keangnam/tileset_1.json';
-var url = 'http://' + baseUrl + '/tilesets/Keangnam/tileset_1.json';
+var url = 'https://' + baseUrl + '/tilesets/Keangnam/tileset_1.json';
 
 var tileset;
 
