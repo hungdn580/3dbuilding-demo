@@ -35,12 +35,12 @@
 </div>
 
 <div class="search-top-mobile">
-    <div id="panel-search" class="out-div">
+    <div id="wrap-search-mobile" class="out-div">
         <div class="search-container">
             <span class="open-sidebar-left" onclick="openNav()">☰</span>
             <form class="form-search-address" action="#">
-                <input type="text" class="input-address" placeholder="Search.." name="search">
-                <button type="submit" class="btn-search-address"><i class="fa fa-search"></i></button>
+                <input type="text" id="content-search" class="input-address" placeholder="Tìm kiếm..." name="search">
+                <span class="btn-search-address" onclick="removeTextSearch('mobile')" index="1"><i class="fa fa-search"></i></span>
             </form>
             <span class="road-directions" onclick=""><i class="fa fa-map-marker-alt "></i></span>
         </div>
@@ -135,7 +135,7 @@
                         <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
                         <form class="form-search-address" action="#">
                             <input type="text" class="input-address" placeholder="Tìm kiếm..." value="Keangnam Hanoi Landmark Tower" name="search">
-                            <button class="btn-search-address" onclick="removeTextSearch()"><i class="fa fa-times"></i></button>
+                            <button class="btn-search-address" onclick="removeTextSearch('web')"><i class="fa fa-times"></i></button>
                         </form>
                         <span class="road-directions" onclick=""><i class="fa fa-map-marker-alt "></i></span>
                     </div>
@@ -303,50 +303,156 @@
 
 <!-- resizable -->
 <div id="bottom-menu-mobile" class="ui-widget-content show-mobile">
-    <div class="toggle-slide-bottom" id="toggle-menu-bottom-mobile" index="1">
-        <span id="hide-menu-mobile"><i class="fa fa-search"></i>Tìm kiếm nhanh</span>
+    <div class="default-search-mobile" id="default-search-mobile">
+        <div class="toggle-slide-bottom" id="toggle-menu-bottom-mobile" index="1">
+            <span id="hide-menu-mobile"><i class="fa fa-search"></i>Tìm kiếm nhanh</span>
+        </div>
+        <div class="slider-item content-search-mobile" id="content-default-toggle-menu-bottom">
+            <div class="first-block-search"> 
+                <div class="address-nearly">
+                    <div class="block-address">
+                        <div class="block-first">
+                             <i class="fa fa-utensils"></i> 
+                        </div>
+                        <div class="block-two">
+                             <span class="title-li-cus">Nhà hàng</span>
+                        </div>
+                    </div>
+                    <div class="block-address">
+                        <div class="block-first">
+                             <i class="fa fa-coffee"></i> 
+                        </div>
+                        <div class="block-two">
+                             <span class="title-li-cus">Cà phê</span>
+                        </div>
+                    </div>
+                    <div class="block-address">
+                        <div class="block-first">
+                            <i class="fa fa-utensils"></i>
+                        </div>
+                        <div class="block-two">
+                             <span class="title-li-cus">Nhà hàng</span>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="clear-fix"></div>
+            <div class="first-block-search">
+                <div class="action-recently">
+                    <ul id="input-form">
+                        <li><input type="text" id="lat_input" name="lat_input" placeholder="Latitude.."></li>
+                        <li><input type="text" id="long_input" name="long_input" placeholder="Longitude.."></li>
+                        <li><input type="submit" id="transform_tile" value="Transforms"></li>
+                    </ul>
+                </div>
+            </div> 
+
+        </div>
     </div>
-    <div class="slider-item" id="content-toggle-menu-bottom">
-        <div class="first-block-search"> 
-            <div class="address-nearly">
-                <div class="block-address">
-                    <div class="block-first">
-                         <i class="fa fa-utensils"></i> 
-                    </div>
-                    <div class="block-two">
-                         <span class="title-li-cus">Nhà hàng</span>
-                    </div>
-                </div>
-                <div class="block-address">
-                    <div class="block-first">
-                         <i class="fa fa-coffee"></i> 
-                    </div>
-                    <div class="block-two">
-                         <span class="title-li-cus">Cà phê</span>
+    <div class="view-point-mobile" id="view-point-mobile">
+        <div class="toggle-slide-bottom title-address" index="1">
+            <div class="fix-toggle" onclick="showViewID('content-point-toggle-menu-bottom')"><i class="fa fa-caret-up"></i></div>
+            <div class="caption-img">
+                <div onclick="showViewID('content-point-toggle-menu-bottom')">
+                    <h5 class="name-point">Keangnam Hanoi Landmark Tower</h5>
+                    <div>
+                        <span class="des-point">Tòa nhà chọc trời gồm 3 tháp có văn phòng, khách sạn, nhà hàng và là nơi ngắm cảnh toàn thành phố</span>
                     </div>
                 </div>
-                <div class="block-address">
-                    <div class="block-first">
-                        <i class="fa fa-utensils"></i>
+                <div class="contact">
+                    <span ><i class="fa fa-phone"></i> 0987654321</span>
+                    <span class="btn btn-primary btn-sm"><i class="fas fa-car"></i>Chỉ đường</span>
+                </div>
+            </div> 
+        </div>
+        <div class="slider-item content-search-mobile" id="content-point-toggle-menu-bottom">
+            <div class="block-slidebar-left">
+                <div class="view-point">
+                    <div class="first-block-search">
+                        <div class="action-recently">
+                            <div class="description">
+                                <span>Tòa nhà chọc trời gồm 3 tháp có văn phòng, khách sạn, nhà hàng và là nơi ngắm cảnh toàn thành phố</span>
+                            </div>
+                        </div>
+                        <div class="action-recently">
+                            <ul>
+                                <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                        class="title-li-cus">Phạm Hùng, Keangnam, Nam Từ Liêm, Hà Nội, dai qua</span></li>
+                                <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                        class="title-li-cus">Landmak 72 </span></li>
+                                <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
+                                        class="title-li-cus">0987654321 </span></li>
+                            </ul>
+                        </div>
+                        <div class="location-suggesst">
+                            <div class="address-nearly-title"><span>Tìm kiếm các khu vực</span></div>
+                            <div class="address-nearly">
+                                <div class="block-address">
+                                    <div class="block-first">
+                                         <i class="fa fa-utensils"></i> 
+                                    </div>
+                                    <div class="block-two">
+                                         <span class="title-li-cus">Nhà hàng</span>
+                                    </div>
+                                </div>
+                                <div class="block-address">
+                                    <div class="block-first">
+                                         <i class="fa fa-coffee"></i> 
+                                    </div>
+                                    <div class="block-two">
+                                         <span class="title-li-cus">Cà phê</span>
+                                    </div>
+                                </div>
+                                <div class="block-address">
+                                    <div class="block-first">
+                                        <i class="fa fa-utensils"></i>
+                                    </div>
+                                    <div class="block-two">
+                                         <span class="title-li-cus">Nhà hàng</span>
+                                    </div>
+                                </div>
+                                <div class="block-address">
+                                    <div class="block-first">
+                                         <i class="fa fa-coffee"></i> 
+                                    </div>
+                                    <div class="block-two">
+                                         <span class="title-li-cus">Cà phê</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="img-suggesst">
+                            <div class="address-nearly-title"><span>Hình ảnh tương tự</span></div>
+                            <div class="address-nearly">
+                                <div class="block-address">
+                                    <div class="block-first">
+                                        <img  src="library/img/slide-bottom/1.jpg"> 
+                                    </div>
+                                </div>
+                                <div class="block-address">
+                                    <div class="block-first">
+                                        <img  src="library/img/slide-bottom/1.jpg">
+                                    </div>
+                                </div>
+                                <div class="block-address">
+                                    <div class="block-first">
+                                       <img  src="library/img/slide-bottom/1.jpg">
+                                    </div>
+                                </div>
+                                <div class="block-address">
+                                    <div class="block-first">
+                                        <img  src="library/img/slide-bottom/1.jpg"> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="block-two">
-                         <span class="title-li-cus">Nhà hàng</span>
-                    </div>
-                </div> 
+                </div>
             </div>
         </div>
-        <div class="clear-fix"></div>
-        <div class="first-block-search">
-            <div class="action-recently">
-                <ul id="input-form">
-                    <li><input type="text" id="lat_input" name="lat_input" placeholder="Latitude.."></li>
-                    <li><input type="text" id="long_input" name="long_input" placeholder="Longitude.."></li>
-                    <li><input type="submit" id="transform_tile" value="Transforms"></li>
-                </ul>
-            </div>
-        </div> 
-
     </div>
+    
 </div>
 
 <!-- Modal show img when click img in side bottom -->
