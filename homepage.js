@@ -246,10 +246,10 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         bottomMenu.style.display = "none";
         // A feature was picked, so show it's overlay content
         nameOverlay.style.display = 'none';
-        if (current.feature != null) {
-            current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
-            current.feature = undefined;
-        }
+        // if (current.feature != null) {
+        //     current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
+        //     current.feature = undefined;
+        // }
 
         // console.log("?????");
         clickHandler(movement);
@@ -267,7 +267,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         // }
 
         current.feature = pickedFeature;
-        Cesium.Color.clone(pickedFeature.color, current.originalColor);
+        // Cesium.Color.clone(pickedFeature.color, current.originalColor);
         // Highlight newly selected feature
         // pickedFeature.color = Cesium.Color.clone(HIGHLIGHT_COLOR, pickedFeature.color);
         bottomMenu.style.display = "block";
