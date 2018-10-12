@@ -566,40 +566,7 @@ button.cesium-button.cesium-fullscreenButton {
     #info-img-detail .close {
         color: white;
     }
-}
-
-@media (min-width: 501px) { 
-    .search-top-mobile {
-        display: none;
-    }
-    #mySidenav-fix {
-        display: block;
-    }
-}
-@media (max-width: 500px) { 
-    #parent-menuleft {
-        display: none;
-    }
-    .search-top-mobile {
-        z-index: 1;
-        padding: 10px 0 0 0;
-        border-radius: 3px;
-        margin-bottom: 10px;
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-    .search-top-mobile .out-div {
-        width: 100%;
-        position: relative; 
-        margin: 0 10px;
-        border-bottom: 0;
-    }
-    .search-container { 
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-}
+} 
 
 #info-img-detail .wrap-iframe {
     height: 100%;
@@ -689,4 +656,84 @@ button.cesium-button.cesium-fullscreenButton {
     width: 100%;
     position: absolute; 
     text-align: center; 
+}
+ 
+/* Hiển thị kiểu web*/
+@media (min-width: 501px) { 
+    .search-top-mobile {
+        display: none;
+    }
+    #mySidenav-fix {
+        display: block;
+    }
+    div#bottom-menu-mobile {
+       display: none;
+    } 
+}
+/* Hiển thị kiểu mobile*/
+@media (max-width: 500px) { 
+    #parent-menuleft {
+        display: none;
+    }
+    .search-top-mobile {
+        z-index: 1;
+        padding: 10px 0 0 0;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        top: 0;
+    }
+    .search-top-mobile .out-div {
+        width: 100%;
+        position: relative; 
+        margin: 0 10px;
+        border-bottom: 0;
+    }
+    .search-container { 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    /* Responsive menu bottom in mobile*/
+    div#bottom-menu-mobile {
+            position: fixed;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0;
+        /*border-radius: 10px 10px 0 0;*/
+        max-height: 100%;
+        z-index: 1;
+        overflow-y: scroll;
+        background: #fff;
+    }
+    div#bottom-menu-mobile .first-block-search {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 0;
+        /*border-bottom: 1px solid #ccc;*/
+    }
+    div#bottom-menu-mobile .first-block-search:last-child {
+        border-bottom: 0;
+        padding-bottom: 20px;
+    }
+    div#bottom-menu-mobile #content-toggle-menu-bottom {
+        display: none;
+    }
+    div#bottom-menu-mobile .toggle-slide-bottom {
+        position: unset;
+        text-align: center; 
+    }
+     div#bottom-menu-mobile span#hide-menu-mobile i {
+        margin-right: 10px;
+    }
+    div#bottom-menu-mobile .clear-fix {
+        height: 1px;
+        margin: 0 auto;
+        background: #ccc;
+        justify-content: center;
+        margin: 0 15px;
+    }
+
 }

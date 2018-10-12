@@ -391,7 +391,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
 
         printProperties(movement, current.feature);
         // Hiển thị slide slick
-        const slider = $(".slider-item");
+        const slider = $(".custom-slider-slick");
         slider
             .slick({
                 slidesToShow: 3,
@@ -510,8 +510,7 @@ function viewDetailImg(value) {
     $('#info-img-detail').css('z-index', '9999');
     $('#info-img-detail').modal('show');
 }
-
-// $('#info-img-detail').modal('show');
+ 
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     $('.widget-settings-shim').show();
@@ -530,24 +529,31 @@ function toggleSidebar() {
     }
 }
 
-function showSidebarLeft() {
-    // $('#panel-search').show();
-    // $('.first-block-search').show();
+function showSidebarLeft() { 
     $('.block-slidebar-left').show();
     $(this).attr('index', 1);
     $('#parent-menuleft').css('width', '370px');
     $('#btn-caret-sidebar').html('<i class="fa fa-caret-left"></i>');
 }
 
-function hideSidebarLeft() {
-    // $('#panel-search').hide();
-    // $('.first-block-search').hide();
+function hideSidebarLeft() { 
     $('.block-slidebar-left').hide();
     $(this).attr('index', 0);
     $('#parent-menuleft').css('width', 0);
     $('#btn-caret-sidebar').html('<i class="fa fa-caret-right"></i>');
 }
-
+// Click vào màn hình -> ẩn menu thứ 2 bên trái
 $('.widget-settings-shim').click(function () {
     closeNav("mySidenav");
 });
+
+// Kéo xem nhanh menu bottom trong mobile
+$("#toggle-menu-bottom-mobile").click(function(){
+    $("#content-toggle-menu-bottom").slideToggle();
+});
+
+// Hiển thị lại khung search mặc định bên bên trái khi click vào xóa text ở khung menu ảnh
+function removeTextSearch() {
+    $('.view-point').hide();
+    $('.view-default').show();
+}

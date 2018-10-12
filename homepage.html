@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="library/webfonts/fa-solid-900.woff2">
     <link rel="stylesheet" href="library/webfonts/fa-solid-900.woff">
     <link rel="stylesheet" href="library/css/all.css">
-    <link rel="stylesheet" type="text/css" href="library/css/slick.css"/>
+
+    <!-- Slide slick -->
+    <link rel="stylesheet" type="text/css" href="library/css/slick.css"/> 
 
 </head>
 
@@ -61,7 +63,7 @@
                             <div class="search-container">
                                 <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
                                 <form class="form-search-address" action="#">
-                                    <input type="text" class="input-address" placeholder="Search.." name="search">
+                                    <input type="text" class="input-address" placeholder="Tìm kiếm..." name="search">
                                     <button type="submit" class="btn-search-address"><i class="fa fa-search"></i>
                                     </button>
                                 </form>
@@ -132,8 +134,8 @@
                     <div class="search-container">
                         <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
                         <form class="form-search-address" action="#">
-                            <input type="text" class="input-address" placeholder="Search.." name="search">
-                            <button type="submit" class="btn-search-address"><i class="fa fa-search"></i></button>
+                            <input type="text" class="input-address" placeholder="Tìm kiếm..." value="Keangnam Hanoi Landmark Tower" name="search">
+                            <button class="btn-search-address" onclick="removeTextSearch()"><i class="fa fa-times"></i></button>
                         </form>
                         <span class="road-directions" onclick=""><i class="fa fa-map-marker-alt "></i></span>
                     </div>
@@ -240,7 +242,7 @@
     <div class="toggle-slide-bottom" id="toggle-slide-bottom" index="1">
         <span id="hide-menu">Ẩn <i class="fa fa-angle-double-down"></i></span>
     </div>
-    <div id="items" class="slider-item">
+    <div id="items" class="custom-slider-slick">
         <div class="item">
             <div class="wrap-img-slide" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                 <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
@@ -296,6 +298,54 @@
                 <img class="item-thumb" src="library/img/slide-bottom/1.jpg"/>
             </div>
         </div>
+    </div>
+</div> 
+
+<!-- resizable -->
+<div id="bottom-menu-mobile" class="ui-widget-content show-mobile">
+    <div class="toggle-slide-bottom" id="toggle-menu-bottom-mobile" index="1">
+        <span id="hide-menu-mobile"><i class="fa fa-search"></i>Tìm kiếm nhanh</span>
+    </div>
+    <div class="slider-item" id="content-toggle-menu-bottom">
+        <div class="first-block-search"> 
+            <div class="address-nearly">
+                <div class="block-address">
+                    <div class="block-first">
+                         <i class="fa fa-utensils"></i> 
+                    </div>
+                    <div class="block-two">
+                         <span class="title-li-cus">Nhà hàng</span>
+                    </div>
+                </div>
+                <div class="block-address">
+                    <div class="block-first">
+                         <i class="fa fa-coffee"></i> 
+                    </div>
+                    <div class="block-two">
+                         <span class="title-li-cus">Cà phê</span>
+                    </div>
+                </div>
+                <div class="block-address">
+                    <div class="block-first">
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                    <div class="block-two">
+                         <span class="title-li-cus">Nhà hàng</span>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="clear-fix"></div>
+        <div class="first-block-search">
+            <div class="action-recently">
+                <ul id="input-form">
+                    <li><input type="text" id="lat_input" name="lat_input" placeholder="Latitude.."></li>
+                    <li><input type="text" id="long_input" name="long_input" placeholder="Longitude.."></li>
+                    <li><input type="submit" id="transform_tile" value="Transforms"></li>
+                </ul>
+            </div>
+        </div> 
+
     </div>
 </div>
 
@@ -399,11 +449,9 @@
     </div>
 </div>
 
-<script src="homepage.js"></script>
-
-
+<!-- Slide slick -->
 <script type="text/javascript" src="library/js/slick.min.js"></script>
-
+<script src="homepage.js"></script>
 </body>
 
 </html>
