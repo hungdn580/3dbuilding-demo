@@ -627,40 +627,7 @@ button.cesium-button.cesium-fullscreenButton {
         color: white;
     }
 }
-
-@media (min-width: 501px) {
-    .search-top-mobile {
-        display: none;
-    }
-    #mySidenav-fix {
-        display: block;
-    }
-}
-@media (max-width: 500px) {
-    #parent-menuleft {
-        display: none;
-    }
-    .search-top-mobile {
-        z-index: 1;
-        padding: 10px 0 0 0;
-        border-radius: 3px;
-        margin-bottom: 10px;
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-    .search-top-mobile .out-div {
-        width: 100%;
-        position: relative;
-        margin: 0 10px;
-        border-bottom: 0;
-    }
-    .search-container {
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-}
-
+ 
 #info-img-detail .wrap-iframe {
     height: 100%;
     position: absolute;
@@ -683,7 +650,7 @@ button.cesium-button.cesium-fullscreenButton {
  #info-img-detail .close {
     position: absolute;
      right: 9px;
-     z-index: 1;
+     display: none;
  }
 .modal-backdrop.in {
     filter: alpha(opacity=50);
@@ -763,9 +730,39 @@ button.cesium-button.cesium-fullscreenButton {
     div#bottom-menu-mobile {
        display: none;
     }
+
+     .search-top-mobile {
+        display: none;
+    }
+    #mySidenav-fix {
+        display: block;
+    }
 }
 /* Hiển thị kiểu mobile*/
 @media (max-width: 500px) {
+    #parent-menuleft {
+        display: none;
+    }
+    .search-top-mobile {
+        z-index: 1;
+        padding: 10px 0 0 0;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .search-top-mobile .out-div {
+        width: 100%;
+        position: relative;
+        margin: 0 10px;
+        border-bottom: 0;
+    }
+    .search-container {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    } 
+
     #parent-menuleft {
         display: none;
     }
@@ -901,39 +898,9 @@ button.cesium-button.cesium-fullscreenButton {
     .loadinggg {
         display: flex;
         justify-content: center;
+        top: 27px;
+        left: 4px;
     }
-
-    /*#wrap-search-mobile .search-container .input-address {
-        padding: 0;
-        padding-top: 3px;
-        width: 90%;
-        margin: 0;
-        display: table-cell;
-        float: none;
-        border: none;
-        border-radius: 4px;
-        margin-left: 0;
-        vertical-align: middle;
-        padding-right: 5px;
-    }
-
-    #wrap-search-mobile .search-container .btn-search-address {
-        vertical-align: middle;
-        background: transparent;
-        border: 0;
-        font-size: 18px;
-        color: #bbbaba;
-        float: none;
-        top: 8px;
-        position: absolute;
-        right: 0;
-        padding: 0; 
-        cursor: pointer;
-        display: table-cell;
-        vertical-align: middle;
-        width: 10%;
-        text-align: center;
-    }*/
 
     .sidenav { 
          padding-top: 0; 
@@ -958,5 +925,12 @@ button.cesium-button.cesium-fullscreenButton {
         position: relative;
         top: 0;
         right: 0;
+    }
+    #info-img-detail iframe {
+        position: relative;
+        z-index: 10;
+    }
+    #info-img-detail .wrap-iframe {
+        position: relative;
     }
 }

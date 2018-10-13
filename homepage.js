@@ -279,11 +279,43 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         //   current.feature = undefined;
         // }
         // Click hiển thị sidebar
+<<<<<<< HEAD
         console.log('Click hiển thị sidebar'); // LƯU ĐIIIIIok
+=======
+        console.log('Click hiển thị sidebar');
+>>>>>>> f1edac5d932fd135076fd88352c4ba10cfaa8192
         if(widthScreen > 500) {
+            console.log('widthScreen 1 - ' + widthScreen);
             $('.view-point').show();
             $('.view-default').hide();
+            bottomMenu.style.display = "block";
+
+            // Hiển thị slide slick
+            const slider = $(".custom-slider-slick");
+            slider
+                .slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    autoplay: false,
+                    variableWidth: true
+                    // autoplaySpeed: 2000,
+                });
+
+            //Implementing navigation of slides using mouse scroll
+            slider.on('wheel', (function (e) {
+                e.preventDefault();
+
+                if (e.originalEvent.deltaY < 0) {
+                    $(this).slick('slickNext');
+                } else {
+                    $(this).slick('slickPrev');
+                }
+            }));
+            // END Hiển thị slide slick
+
         } else {
+            console.log('widthScreen 2 - ' + widthScreen);
+            bottomMenu.style.display = 'none';
             $('#content-search').val('Keangnam Hanoi Landmark Tower');
             $('#default-search-mobile').hide();
             $('#view-point-mobile').show();
@@ -295,7 +327,6 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         // Cesium.Color.clone(pickedFeature.color, current.originalColor);
         // Highlight newly selected feature
         // pickedFeature.color = Cesium.Color.clone(HIGHLIGHT_COLOR, pickedFeature.color);
-        bottomMenu.style.display = "block";
         // A feature was picked, so show it's overlay content
         nameOverlay.style.display = 'block';
         nameOverlay.style.bottom = viewer.canvas.clientHeight - movement.position.y + 'px';
@@ -306,30 +337,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         selectedEntity.description = 'Loading <div class="cesium-infoBox-loading"></div>';
         viewer.selectedEntity = selectedEntity;
 
-        printProperties(movement, current.feature);
-        // Hiển thị slide slick
-        const slider = $(".custom-slider-slick");
-        slider
-            .slick({
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                autoplay: false,
-                variableWidth: true
-                // autoplaySpeed: 2000,
-            });
-
-        //Implementing navigation of slides using mouse scroll
-        slider.on('wheel', (function (e) {
-            e.preventDefault();
-
-            if (e.originalEvent.deltaY < 0) {
-                $(this).slick('slickNext');
-            } else {
-                $(this).slick('slickPrev');
-            }
-        }));
-        // END Hiển thị slide slick
-
+        printProperties(movement, current.feature); 
     }
     // current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
     // current.feature = undefined;
