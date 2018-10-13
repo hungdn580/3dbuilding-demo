@@ -279,7 +279,6 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         //   current.feature = undefined;
         // }
         // Click hiển thị sidebar
-        // console.log('Click hiển thị sidebar');
         if(widthScreen > 500) {
             console.log('widthScreen 1 - ' + widthScreen);
             $('.view-point').show();
@@ -333,7 +332,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         selectedEntity.description = 'Loading <div class="cesium-infoBox-loading"></div>';
         viewer.selectedEntity = selectedEntity;
 
-        printProperties(movement, current.feature); 
+        printProperties(movement, current.feature);
     }
     // current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
     // current.feature = undefined;
