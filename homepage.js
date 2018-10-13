@@ -66,7 +66,7 @@ toggleSlideBottom.onclick = function () {
     } else {
         toggleSlideBottom.setAttribute('index', 1);
         slideBottom.style.display = "block";
-        bottomMenu.style.height = "200px";
+        // bottomMenu.style.height = "200px";
         toggleSlideBottom.style.right = "5px";
         if(widthScreen <= 500) {
             toggleSlideBottom.style.bottom = "170px";
