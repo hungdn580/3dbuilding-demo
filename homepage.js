@@ -279,6 +279,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         //   current.feature = undefined;
         // }
         // Click hiển thị sidebar
+        // console.log('Click hiển thị sidebar');
         if(widthScreen > 500) {
             console.log('widthScreen 1 - ' + widthScreen);
             $('.view-point').show();
