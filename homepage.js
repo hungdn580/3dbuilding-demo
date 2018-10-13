@@ -15,11 +15,11 @@ viewer.scene.globe.depthTestAgainstTerrain = true;
 var scene = viewer.scene;
 
 // var port = process.env.PORT || 8080;
-var baseUrl = window.location.hostname;
+var baseUrl = window.location.hostname + ":8080";
 console.log(baseUrl);
 
 // var url = 'https://enigmatic-shore-17582.herokuapp.com/tilesets/Keangnam/tileset_1.json';
-var url = 'https://' + baseUrl + '/tilesets/Keangnam/tileset_1.json';
+var url = 'http://' + baseUrl + '/tilesets/Keangnam/tileset_1.json';
 
 var tileset;
 
@@ -28,7 +28,7 @@ var hideMenu = document.getElementById("hide-menu");
 var slideBottom = document.getElementById("items");
 var toggleSlideBottom = document.getElementById("toggle-slide-bottom");
 var btnFullScreen = document.getElementsByClassName("cesium-fullscreenButton");
-
+// LÀM SAO ĐỂ TÌM cốnl
 var inputLatitude = document.getElementById("lat_input");
 var inputLongtitude = document.getElementById("long_input");
 
@@ -279,6 +279,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         //   current.feature = undefined;
         // }
         // Click hiển thị sidebar
+        console.log('Click hiển thị sidebar'); // LƯU ĐIIIIIok
         if(widthScreen > 500) {
             $('.view-point').show();
             $('.view-default').hide();
