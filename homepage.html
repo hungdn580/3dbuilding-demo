@@ -47,6 +47,7 @@
 <div id="cesiumContainer" class="fullsize">
 </div>
 
+<!-- THANH SEARCH Ở MOBILE -->
 <div class="search-top-mobile">
     <div id="wrap-search-mobile" class="out-div">
         <div class="search-container">
@@ -61,19 +62,25 @@
         </div>
     </div>
 </div>
+<!-- END THANH SEARCH Ở MOBILE -->
 
 <div id="parent-menuleft">
+    <!-- BUTTON CLICK ẨN HIỆN MENU LEFT Ở WEB -->
     <div class="div-toggle-sidebar" onclick="toggleSidebar()">
         <a href="javascript:void(0)" class="toggle-sidebar closebtn" index="1">
             <span id="btn-caret-sidebar"><i class="fa fa-caret-left"></i></span>
         </a>
     </div>
+    <!-- END BUTTON CLICK ẨN HIỆN MENU LEFT Ở WEB -->
+
     <div id="mySidenav-fix" class="sidenav-fix">
 
         <div class="block-slidebar-left">
+            <!-- MENU LEFT MẶC ĐỊNH KHI MỚI VÀO PAGE -->
             <div class="view-default">
                 <div>
                     <div class="first-block-search">
+                        <!-- THANH SEARCH MENU LEFT Ở MÀN HÌNH WEB -->
                         <div id="panel-search" class="out-div">
                             <div class="search-container">
                                 <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
@@ -85,6 +92,8 @@
                                 <span class="road-directions" onclick=""><i class="fa fa-map-marker-alt "></i></span>
                             </div>
                         </div>
+                        <!-- END THANH SEARCH MENU LEFT Ở MÀN HÌNH WEB -->
+
                         <div class="action-recently">
                             <ul>
                                 <li><span class="icon-cus"><i class="fa fa-clock"></i></span><span
@@ -143,7 +152,10 @@
                 </div>
 
             </div>
+            <!-- END MENU LEFT MẶC ĐỊNH KHI MỚI VÀO PAGE -->
 
+            <!-- MÀN HÌNH MENU LEFT KHI CLICK VÀO 1 ĐỊA ĐIỂM TRÊN MAP 
+                -> HIỂN THỊ THÔNG TIN CỦA ĐỊA ĐIỂM ĐÓ -->
             <div class="view-point" style="display: none;">
                 <div id="panel-search" class="out-div">
                     <div class="search-container">
@@ -243,6 +255,7 @@
                     </div>
                 </div>
             </div>
+            <!-- END MÀN HÌNH MENU LEFT KHI CLICK VÀO 1 ĐỊA ĐIỂM TRÊN MAP -->
         </div>
     </div>
 </div>
@@ -253,6 +266,7 @@
     <h1>Loading...</h1>
 </div>
 
+<!-- SLIDE (SLICK) HIỂN THỊ PHÍA DƯỚI MÀN HÌNH KHI CLICK VÀO 1 ĐỊA ĐIỂM HOẶC NHÀ -->
 <div id="bottom-menu">
     <div class="toggle-slide-bottom toggle-slide-bottom-web" id="toggle-slide-bottom" index="1">
         <span id="hide-menu"><span id="text-btm-menu">Ẩn</span> <i class="fa fa-angle-double-down"></i></span>
@@ -315,13 +329,18 @@
         </div>
     </div>
 </div> 
+<!-- END SLIDE (SLICK) HIỂN THỊ PHÍA DƯỚI MÀN HÌNH KHI CLICK VÀO 1 ĐỊA ĐIỂM HOẶC NHÀ -->
 
-<!-- resizable -->
+<!-- MOBILE -->
+<!-- resizable - HIỂN THỊ Ở DƯỚI MÀN HÌNH ĐIỆN THOẠI KHI CLICK VÀO 1 ĐỊA ĐIỂM -->
 <div id="bottom-menu-mobile" class="ui-widget-content show-mobile">
+
+    <!-- BUTTON LUÔN LUÔN HIỂN THỊ Ở DƯỚI CÙNG MÀN HÌNH ĐIỆN THOẠI -->
     <div class="default-search-mobile" id="default-search-mobile">
         <div class="toggle-slide-bottom" id="toggle-menu-bottom-mobile" index="1">
             <span id="hide-menu-mobile"><i class="fa fa-search"></i>Tìm kiếm nhanh</span>
         </div>
+        <!-- PHẦN GIAO DIỆN HIỆN LÊN KHI CLICK VÀO "TÌM KIẾM NHANH" -->
         <div class="slider-item content-search-mobile" id="content-default-toggle-menu-bottom">
             <div class="first-block-search"> 
                 <div class="address-nearly">
@@ -361,10 +380,15 @@
                     </ul>
                 </div>
             </div> 
-
         </div>
+        <!-- END PHẦN GIAO DIỆN HIỆN LÊN KHI CLICK VÀO "TÌM KIẾM NHANH" -->
+
     </div>
+    <!-- END BUTTON LUÔN LUÔN HIỂN THỊ Ở DƯỚI CÙNG MÀN HÌNH ĐIỆN THOẠI -->
+
+    <!-- KHI CLICK VÀO 1 ĐỊA ĐIỂM -> ẨN BUTTON "TÌM KIẾM NHANH" -->
     <div class="view-point-mobile" id="view-point-mobile">
+        <!-- CLICK ĐỂ HIỂN THỊ THÊM THÔNG TIN -->
         <div class="toggle-slide-bottom title-address" index="1">
             <div class="fix-toggle" onclick="showViewID('content-point-toggle-menu-bottom')"><i class="fa fa-caret-up"></i></div>
             <div class="caption-img">
@@ -380,6 +404,9 @@
                 </div>
             </div> 
         </div>
+        <!-- END CLICK ĐỂ HIỂN THỊ THÊM THÔNG TIN -->
+
+        <!-- PHẦN THÔNG TIN ĐỊA ĐIỂM HIỂN THỊ RA KHI CLICK VÀO PHẦN TRÊN -->
         <div class="slider-item content-search-mobile" id="content-point-toggle-menu-bottom">
             <div>
                 <div class="view-point">
@@ -438,25 +465,25 @@
                         </div>
                         
                         <div class="img-suggesst">
-                            <div class="address-nearly-title"><span>Hình ảnh tương tự</span></div>
+                            <div class="address-nearly-title"><span>Hình ảnh chi tiết</span></div>
                             <div class="address-nearly">
                                 <div class="block-address">
-                                    <div class="block-first">
+                                    <div class="block-first" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                                         <img  src="library/img/slide-bottom/1.jpg"> 
-                                    </div>
+                                    </div> 
                                 </div>
-                                <div class="block-address">
-                                    <div class="block-first">
+                                <div class="block-address" >
+                                    <div class="block-first" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                                         <img  src="library/img/slide-bottom/1.jpg">
                                     </div>
                                 </div>
                                 <div class="block-address">
-                                    <div class="block-first">
+                                    <div class="block-first" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                                        <img  src="library/img/slide-bottom/1.jpg">
                                     </div>
                                 </div>
                                 <div class="block-address">
-                                    <div class="block-first">
+                                    <div class="block-first" onclick="viewDetailImg('https://my.matterport.com/show/?m=3DCWEk9D1iw')">
                                         <img  src="library/img/slide-bottom/1.jpg"> 
                                     </div>
                                 </div>
@@ -466,7 +493,10 @@
                 </div>
             </div>
         </div>
+        <!-- END PHẦN THÔNG TIN ĐỊA ĐIỂM HIỂN THỊ RA KHI CLICK VÀO PHẦN TRÊN -->
+
     </div>
+    <!-- END KHI CLICK VÀO 1 ĐỊA ĐIỂM -> ẨN BUTTON "TÌM KIẾM NHANH" -->
     
 </div>
 
@@ -537,14 +567,15 @@
 </div>
 
 <!-- Menu sidebar left -->
-
+<!-- DIV LÀM ĐEN MÀN HÌNH -->
 <div class="widget-settings-shim"></div>
 
+<!-- MENU CÔNG CỤ KHI CLICK VÀO DẤU 3 GẠCH Ở THANH SEARCH -->
 <div id="mySidenav" class="sidenav">
     <div>
         <div class="brand-menuleft">
             <span class="title-sidebar">H2 MAPs</span>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav')"><i
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav')"><i
                 class="fa fa-arrow-left"></i></a>
         </div>
         <ul class="list-group">
@@ -571,6 +602,7 @@
         </ul>
     </div>
 </div>
+<!-- END MENU CÔNG CỤ KHI CLICK VÀO DẤU 3 GẠCH Ở THANH SEARCH -->
 
 <!-- Slide slick -->
 <script type="text/javascript" src="library/js/slick.min.js"></script>
