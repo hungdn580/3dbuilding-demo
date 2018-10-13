@@ -50,6 +50,9 @@ if(widthScreen <= 500) {
 }
 
 toggleSlideBottom.onclick = function () {
+    console.log('------------------');
+    console.log(toggleSlideBottom.getAttribute('index'));
+    console.log(widthScreen);
     if (toggleSlideBottom.getAttribute('index') == 1) {
         toggleSlideBottom.setAttribute('index', 0);
         slideBottom.style.display = "none";
@@ -57,6 +60,7 @@ toggleSlideBottom.onclick = function () {
         toggleSlideBottom.style.bottom = "40px";
         toggleSlideBottom.style.right = "37px";
         if(widthScreen <= 500) {
+            console.log('')
             toggleSlideBottom.innerHTML = '<span id="show-slide-bottom"><i class="fa fa-angle-double-up"></i></span>';
         } else {
             toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Xem thêm ảnh<i class="fa fa-angle-double-up"></i></span>';
@@ -73,6 +77,7 @@ toggleSlideBottom.onclick = function () {
             toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Ẩn<i class="fa fa-angle-double-down"></i></span>';
         }
     }
+    console.log('------------------');
 
 };
 
@@ -437,6 +442,7 @@ function closeNav(id) {
     $('.widget-settings-shim').hide();
 }
 
+// Toggle slide slick
 function toggleSidebar() {
     if ($(this).attr('index') == 0) {
         showSidebarLeft();
@@ -458,6 +464,8 @@ function hideSidebarLeft() {
     $('#parent-menuleft').css('width', 0);
     $('#btn-caret-sidebar').html('<i class="fa fa-caret-right"></i>');
 }
+// END
+
 // Click vào màn hình -> ẩn menu thứ 2 bên trái
 $('.widget-settings-shim').click(function () {
     closeNav("mySidenav");
@@ -490,5 +498,6 @@ $('#change-content-icon-search').click(function(){
 }) 
 
 function showViewID(id) {
+    console.log('toggle show view id');
     $('#' + id).slideToggle();
 }
