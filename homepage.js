@@ -28,7 +28,7 @@ var hideMenu = document.getElementById("hide-menu");
 var slideBottom = document.getElementById("items");
 var toggleSlideBottom = document.getElementById("toggle-slide-bottom");
 var btnFullScreen = document.getElementsByClassName("cesium-fullscreenButton");
-// LÀM SAO ĐỂ TÌM cốnl
+
 var inputLatitude = document.getElementById("lat_input");
 var inputLongtitude = document.getElementById("long_input");
 
@@ -66,7 +66,7 @@ toggleSlideBottom.onclick = function () {
     } else {
         toggleSlideBottom.setAttribute('index', 1);
         slideBottom.style.display = "block";
-        bottomMenu.style.height = "200px";
+        // bottomMenu.style.height = "200px";
         toggleSlideBottom.style.right = "5px";
         if(widthScreen <= 500) {
             toggleSlideBottom.style.bottom = "170px";
@@ -279,7 +279,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         //   current.feature = undefined;
         // }
         // Click hiển thị sidebar
-        console.log('Click hiển thị sidebar');
+        // console.log('Click hiển thị sidebar');
         if(widthScreen > 500) {
             console.log('widthScreen 1 - ' + widthScreen);
             $('.view-point').show();
@@ -500,3 +500,17 @@ function showViewID(id) {
     // console.log('toggle show view id');
     $('#' + id).slideToggle();
 }
+
+// JOYSTICK
+var joystickView = new JoystickView(150, function(callbackView){
+    $("#joystickContent").append(callbackView.render().el);
+    setTimeout(function(){
+        callbackView.renderSprite();
+    }, 0);
+});
+joystickView.bind("verticalMove", function(y){
+    $("#yVal").html(y);
+});
+joystickView.bind("horizontalMove", function(x){
+    $("#xVal").html(x);
+});

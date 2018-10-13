@@ -41,6 +41,11 @@
     <!-- Slide slick -->
     <link rel="stylesheet" type="text/css" href="library/css/slick.css"/> 
 
+    <!-- joystick -->
+    <script type="text/javascript" src="library/js/underscore-min.js"></script>
+    <script type="text/javascript" src="library/js/backbone-min.js"></script>
+    <script type="text/javascript" src="library/js/joystick_view.js"></script>
+
 </head>
 
 <body>
@@ -147,6 +152,21 @@
                                      <span class="title-li-cus">Cà phê</span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="first-block-search">
+                        <!-- <div class="address-nearly-title"><span>JOYSTICK</span></div> -->
+                        <div class="address-nearly">
+                            <script type="text/html" id="joystick-view">
+                                <canvas id="joystickCanvas" width="<%= squareSize %>" height="<%= squareSize %>" style="width: <%= squareSize %>px; height: <%= squareSize %>px;">
+                                </canvas>
+                            </script>
+
+                                <div id="joystickContent"></div>
+                                <div class="result-vector">
+                                    x: <span id="xVal"></span><br/>
+                                    y: <span id="yVal"></span><br/>
+                                </div> 
                         </div>
                     </div>
                 </div>
