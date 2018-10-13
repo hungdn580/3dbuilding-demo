@@ -57,23 +57,24 @@ toggleSlideBottom.onclick = function () {
         toggleSlideBottom.setAttribute('index', 0);
         slideBottom.style.display = "none";
         bottomMenu.style.height = "auto";
-        toggleSlideBottom.style.bottom = "40px";
         toggleSlideBottom.style.right = "37px";
         if(widthScreen <= 500) {
-            console.log('')
+            toggleSlideBottom.style.bottom = "40px";
             toggleSlideBottom.innerHTML = '<span id="show-slide-bottom"><i class="fa fa-angle-double-up"></i></span>';
         } else {
+            toggleSlideBottom.style.bottom = "0";
             toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Xem thêm ảnh<i class="fa fa-angle-double-up"></i></span>';
         }
     } else {
         toggleSlideBottom.setAttribute('index', 1);
         slideBottom.style.display = "block";
         bottomMenu.style.height = "200px";
-        toggleSlideBottom.style.bottom = "170px";
         toggleSlideBottom.style.right = "5px";
         if(widthScreen <= 500) {
+            toggleSlideBottom.style.bottom = "170px";
             toggleSlideBottom.innerHTML = '<span id="show-slide-bottom"><i class="fa fa-angle-double-down"></i></span>';
         } else {
+            toggleSlideBottom.style.bottom = "130px";
             toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Ẩn<i class="fa fa-angle-double-down"></i></span>';
         }
     }
@@ -271,6 +272,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         // }
 
         // Click hiển thị sidebar
+        console.log('widthScreen - ' + widthScreen);
         if(widthScreen > 500) {
             console.log('widthScreen1 - ' + widthScreen);
             $('.view-point').show();
@@ -312,6 +314,7 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
 
         printProperties(movement, current.feature);
         // Hiển thị slide slick
+        console.log('Hiển thị slide slick');
         const slider = $(".custom-slider-slick");
         slider
             .slick({
