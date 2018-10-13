@@ -145,30 +145,34 @@ div#mySidenav ul li:hover i {
 }
 .search-container .input-address {
     border: 0;
-    padding: 0;
-    padding-top: 3px;
-    width: 100%;
+    padding: 3px 10px 0 0; 
+    width: 90%;
     margin: 0;
     display: block;
     border: none;
     border-radius: 4px;
     margin-left: 0;
+    float: left;
 }
 .search-container .btn-search-address {
     background: transparent;
+    float: left;
     border: 0;
     font-size: 18px;
     color: #bbbaba;
     float: right;
-    top: 0;
+    top: 8px;
     position: absolute;
     right: 0;
-    padding: 9px 10px;
+    padding: 0;
+    cursor: pointer;
+    width: 10%;
+    text-align: center;
 }
 .search-container .form-search-address {
     float: left;
     position: relative;
-    padding: 7px 15px;
+    padding: 7px 0 1px 15px;
     height: 40px;
     width: 80%;
 }
@@ -251,7 +255,7 @@ span.road-directions:before {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid #cccc;
+    border-bottom: 1px solid #cccccc7a;
 }
 .view-point .out-div {
        position: absolute;
@@ -290,7 +294,7 @@ span.road-directions:before {
 .first-block-search ul li {
     list-style-type: none;
     padding: 10px 15px;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc42;
 }
 .first-block-search ul li:last-child {
     border-bottom: none;
@@ -867,5 +871,92 @@ button.cesium-button.cesium-fullscreenButton {
     }
     #view-point-mobile .fix-toggle span {
         cursor: pointer;
+    }
+    #wrap-search-mobile div#change-content-icon-search button {
+        background: transparent;
+        border: 0;
+    }
+    #bottom-menu .toggle-slide-bottom i {
+        margin: 0!important;
+    }
+    div#toggle-slide-bottom {
+        border-radius: 50%!important;
+        bottom: 170px;
+        width: 29px!important;
+        height: 29px!important;
+        padding: 0!important;
+        text-align: center!important;
+        line-height: 29px!important;
+        font-size: 15px!important;
+    }
+    #items {
+        bottom: 30px;
+    }
+    .cesium-viewer-fullscreenContainer {
+        bottom: 40px;
+    }
+    #info-img-detail .modal-dialog {
+        width: 100%;
+    }
+    .loadinggg {
+        display: flex;
+        justify-content: center;
+    }
+
+    /*#wrap-search-mobile .search-container .input-address {
+        padding: 0;
+        padding-top: 3px;
+        width: 90%;
+        margin: 0;
+        display: table-cell;
+        float: none;
+        border: none;
+        border-radius: 4px;
+        margin-left: 0;
+        vertical-align: middle;
+        padding-right: 5px;
+    }
+
+    #wrap-search-mobile .search-container .btn-search-address {
+        vertical-align: middle;
+        background: transparent;
+        border: 0;
+        font-size: 18px;
+        color: #bbbaba;
+        float: none;
+        top: 8px;
+        position: absolute;
+        right: 0;
+        padding: 0; 
+        cursor: pointer;
+        display: table-cell;
+        vertical-align: middle;
+        width: 10%;
+        text-align: center;
+    }*/
+
+    .sidenav { 
+         padding-top: 0; 
+    }
+    .sidenav>div {
+        padding-top: 10px;
+        padding-right: 10px;
+    }
+    .sidenav .brand-menuleft {
+        padding-bottom: 10px;
+    }
+    .sidenav .title-sidebar {
+        position: relative;
+        top: 0; 
+        left: 0; 
+        font-size: 20px;
+        margin-left: 12px;
+        float: left;
+    }
+    .sidenav .closebtn {
+        text-align: right;
+        position: relative;
+        top: 0;
+        right: 0;
     }
 }

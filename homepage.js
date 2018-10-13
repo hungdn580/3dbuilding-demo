@@ -46,22 +46,39 @@ nameOverlay.style.backgroundColor = 'black';
 
 var widthScreen = window.outerWidth; // Đo kích thước màn hình
 
+if(widthScreen <= 500) {
+    $('#text-btm-menu').text('');
+}
+
 toggleSlideBottom.onclick = function () {
+    console.log('------------------');
+    console.log(toggleSlideBottom.getAttribute('index'));
+    console.log(widthScreen);
     if (toggleSlideBottom.getAttribute('index') == 1) {
         toggleSlideBottom.setAttribute('index', 0);
         slideBottom.style.display = "none";
         bottomMenu.style.height = "auto";
-        toggleSlideBottom.style.bottom = "0";
-        toggleSlideBottom.style.right = "30px";
-        toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Xem thêm ảnh<i class="fa fa-angle-double-up"></i></span>';
+        toggleSlideBottom.style.bottom = "40px";
+        toggleSlideBottom.style.right = "37px";
+        if(widthScreen <= 500) {
+            console.log('')
+            toggleSlideBottom.innerHTML = '<span id="show-slide-bottom"><i class="fa fa-angle-double-up"></i></span>';
+        } else {
+            toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Xem thêm ảnh<i class="fa fa-angle-double-up"></i></span>';
+        }
     } else {
         toggleSlideBottom.setAttribute('index', 1);
         slideBottom.style.display = "block";
         bottomMenu.style.height = "200px";
-        toggleSlideBottom.style.bottom = "130px";
-        toggleSlideBottom.style.right = "0";
-        toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Ẩn<i class="fa fa-angle-double-down"></i></span>';
+        toggleSlideBottom.style.bottom = "170px";
+        toggleSlideBottom.style.right = "5px";
+        if(widthScreen <= 500) {
+            toggleSlideBottom.innerHTML = '<span id="show-slide-bottom"><i class="fa fa-angle-double-down"></i></span>';
+        } else {
+            toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Ẩn<i class="fa fa-angle-double-down"></i></span>';
+        }
     }
+    console.log('------------------');
 
 };
 
@@ -256,12 +273,16 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
 
         // Click hiển thị sidebar
         if(widthScreen > 500) {
+            console.log('widthScreen1 - ' + widthScreen);
             $('.view-point').show();
             $('.view-default').hide();
         } else {
+             console.log('widthScreen2 - ' + widthScreen);
             $('#content-search').val('Keangnam Hanoi Landmark Tower');
             $('#default-search-mobile').hide();
             $('#view-point-mobile').show();
+             $('#change-content-icon-search').html('<span><i class="fa fa-times"></i></button>');
+             $('#change-content-icon-search').attr('index', 0);
         }
 
         console.log("?????");
@@ -422,6 +443,7 @@ function closeNav(id) {
     $('.widget-settings-shim').hide();
 }
 
+// Toggle slide slick
 function toggleSidebar() {
     if ($(this).attr('index') == 0) {
         showSidebarLeft();
@@ -443,6 +465,8 @@ function hideSidebarLeft() {
     $('#parent-menuleft').css('width', 0);
     $('#btn-caret-sidebar').html('<i class="fa fa-caret-right"></i>');
 }
+// END
+
 // Click vào màn hình -> ẩn menu thứ 2 bên trái
 $('.widget-settings-shim').click(function () {
     closeNav("mySidenav");
@@ -452,21 +476,29 @@ $('.widget-settings-shim').click(function () {
 $("#toggle-menu-bottom-mobile").click(function(){
     $("#content-default-toggle-menu-bottom").slideToggle();
 });
-
 // Hiển thị lại khung search mặc định bên bên trái khi click vào xóa text ở khung menu ảnh
 function removeTextSearch(device) {
     if(device == 'web') {
         $('.view-point').hide();
         $('.view-default').show();
     } else {
-        console.log(this);
-        // (this).html('<i class="fa fa-times"></i>');
-        // (this).attr('index', 0);
+        return false;
+    }
+}
+
+$('#change-content-icon-search').click(function(){
+    if($(this).attr('index') == 0) {
+        $(this).attr('index', 1);
+        $('#change-content-icon-search').html('<button type="submit"><i class="fa fa-search"></i></button>');
         $('#content-search').val('');
         $('#default-search-mobile').show();
         $('#view-point-mobile').hide();
     }
-}
+
+
+})
+
 function showViewID(id) {
+    console.log('toggle show view id');
     $('#' + id).slideToggle();
 }

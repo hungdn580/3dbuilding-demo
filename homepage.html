@@ -53,7 +53,9 @@
             <span class="open-sidebar-left" onclick="openNav()">☰</span>
             <form class="form-search-address" action="#">
                 <input type="text" id="content-search" class="input-address" placeholder="Tìm kiếm..." name="search">
-                <span class="btn-search-address" onclick="removeTextSearch('mobile')" index="1"><i class="fa fa-search"></i></span>
+                <div class="btn-search-address" id="change-content-icon-search" index="1">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
             </form>
             <span class="road-directions" onclick=""><i class="fa fa-map-marker-alt "></i></span>
         </div>
@@ -148,7 +150,7 @@
                         <span class="open-sidebar-left" onclick="openNav()">&#9776;</span>
                         <form class="form-search-address" action="#">
                             <input type="text" class="input-address" placeholder="Tìm kiếm..." value="Keangnam Hanoi Landmark Tower" name="search">
-                            <button class="btn-search-address" onclick="removeTextSearch('web')"><i class="fa fa-times"></i></button>
+                            <span class="btn-search-address" onclick="removeTextSearch('web')"><i class="fa fa-times"></i></span>
                         </form>
                         <span class="road-directions" onclick=""><i class="fa fa-map-marker-alt "></i></span>
                     </div>
@@ -252,8 +254,8 @@
 </div>
 
 <div id="bottom-menu">
-    <div class="toggle-slide-bottom" id="toggle-slide-bottom" index="1">
-        <span id="hide-menu">Ẩn <i class="fa fa-angle-double-down"></i></span>
+    <div class="toggle-slide-bottom toggle-slide-bottom-web" id="toggle-slide-bottom" index="1">
+        <span id="hide-menu"><span id="text-btm-menu">Ẩn</span> <i class="fa fa-angle-double-down"></i></span>
     </div>
     <div id="items" class="custom-slider-slick">
         <div class="item">
@@ -379,7 +381,7 @@
             </div> 
         </div>
         <div class="slider-item content-search-mobile" id="content-point-toggle-menu-bottom">
-            <div class="block-slidebar-left">
+            <div>
                 <div class="view-point">
                     <div class="first-block-search">
                         <div class="action-recently">
@@ -540,9 +542,11 @@
 
 <div id="mySidenav" class="sidenav">
     <div>
-        <span class="title-sidebar">H2 MAPs</span>
+        <div class="brand-menuleft">
+            <span class="title-sidebar">H2 MAPs</span>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav('mySidenav')"><i
                 class="fa fa-arrow-left"></i></a>
+        </div>
         <ul class="list-group">
             <li class="list-group-item"><a href="#"><span class="span-icon"><i class="fa fa-map"></i></span>
                 <span>Maps</span></a></li>
