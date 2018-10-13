@@ -15,10 +15,11 @@ viewer.scene.globe.depthTestAgainstTerrain = true;
 var scene = viewer.scene;
 
 // var port = process.env.PORT || 8080;
-var baseUrl = window.location.hostname + ':8080';
+var baseUrl = window.location.hostname;
 console.log(baseUrl);
+
 // var url = 'https://enigmatic-shore-17582.herokuapp.com/tilesets/Keangnam/tileset_1.json';
-var url = 'http://' + baseUrl + '/tilesets/Keangnam/tileset_1.json';
+var url = 'https://' + baseUrl + '/tilesets/Keangnam/tileset_1.json';
 
 var tileset;
 
@@ -50,9 +51,6 @@ if(widthScreen <= 500) {
 }
 
 toggleSlideBottom.onclick = function () {
-    console.log('------------------');
-    console.log(toggleSlideBottom.getAttribute('index'));
-    console.log(widthScreen);
     if (toggleSlideBottom.getAttribute('index') == 1) {
         toggleSlideBottom.setAttribute('index', 0);
         slideBottom.style.display = "none";
@@ -78,7 +76,6 @@ toggleSlideBottom.onclick = function () {
             toggleSlideBottom.innerHTML = '<span id="show-slide-bottom">Ẩn<i class="fa fa-angle-double-down"></i></span>';
         }
     }
-    console.log('------------------');
 
 };
 
@@ -271,21 +268,6 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         //     current.feature = undefined;
         // }
 
-        // Click hiển thị sidebar
-        console.log('widthScreen - ' + widthScreen);
-        if(widthScreen > 500) {
-            console.log('widthScreen1 - ' + widthScreen);
-            $('.view-point').show();
-            $('.view-default').hide();
-        } else {
-             console.log('widthScreen2 - ' + widthScreen);
-            $('#content-search').val('Keangnam Hanoi Landmark Tower');
-            $('#default-search-mobile').hide();
-            $('#view-point-mobile').show();
-             $('#change-content-icon-search').html('<span><i class="fa fa-times"></i></button>');
-             $('#change-content-icon-search').attr('index', 0);
-        }
-
         console.log("?????");
         clickHandler(movement);
         return;
@@ -296,6 +278,17 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
         //   current.feature.color = Cesium.Color.clone(current.originalColor, current.feature.color);
         //   current.feature = undefined;
         // }
+        // Click hiển thị sidebar
+        if(widthScreen > 500) {
+            $('.view-point').show();
+            $('.view-default').hide();
+        } else {
+            $('#content-search').val('Keangnam Hanoi Landmark Tower');
+            $('#default-search-mobile').hide();
+            $('#view-point-mobile').show();
+             $('#change-content-icon-search').html('<span><i class="fa fa-times"></i></button>');
+             $('#change-content-icon-search').attr('index', 0);
+        }
 
         current.feature = pickedFeature;
         // Cesium.Color.clone(pickedFeature.color, current.originalColor);
@@ -314,7 +307,6 @@ viewer.screenSpaceEventHandler.setInputAction(function onLeftClick(movement) {
 
         printProperties(movement, current.feature);
         // Hiển thị slide slick
-        console.log('Hiển thị slide slick');
         const slider = $(".custom-slider-slick");
         slider
             .slick({
@@ -478,6 +470,7 @@ $('.widget-settings-shim').click(function () {
 $("#toggle-menu-bottom-mobile").click(function(){
     $("#content-default-toggle-menu-bottom").slideToggle();
 });
+
 // Hiển thị lại khung search mặc định bên bên trái khi click vào xóa text ở khung menu ảnh
 function removeTextSearch(device) {
     if(device == 'web') {
@@ -496,11 +489,9 @@ $('#change-content-icon-search').click(function(){
         $('#default-search-mobile').show();
         $('#view-point-mobile').hide();
     }
-    
-    
-}) 
+}) ;
 
 function showViewID(id) {
-    console.log('toggle show view id');
+    // console.log('toggle show view id');
     $('#' + id).slideToggle();
 }
