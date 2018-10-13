@@ -278,6 +278,9 @@ span.road-directions:before {
     border-radius: 3px;
     margin-bottom: 7px;
 }
+#mySidenav-fix .first-block-search:last-child {
+    margin-bottom: 30px;
+}
 .first-block-search ul {
     padding: 0;
 }
@@ -718,7 +721,6 @@ button.cesium-button.cesium-fullscreenButton {
     text-align: center;
 }
 
-
 /* Hiển thị kiểu web*/
 @media (min-width: 501px) {
     .search-top-mobile {
@@ -934,3 +936,16 @@ button.cesium-button.cesium-fullscreenButton {
         position: relative;
     }
 }
+
+/*JOY STICK*/
+#joystickContent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.result-vector {
+
+}
+
+
+/*END JOY STICK*/
